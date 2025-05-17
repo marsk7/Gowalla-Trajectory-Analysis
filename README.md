@@ -439,4 +439,4 @@ LIMIT 5;
 
 - Leaflet.js for the mapping library
 - PostGIS for spatial queries
-- McDonald's store data from Kaggle
+- Dataset from Kaggle
