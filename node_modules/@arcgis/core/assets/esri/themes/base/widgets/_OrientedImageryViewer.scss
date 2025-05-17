@@ -1,0 +1,387 @@
+@mixin orientedImageryViewerBase() {
+  // variables
+  --esri-oriented-imagery-viewer-action-icon-size: 8px;
+  --esri-oriented-imagery-viewer-min-width: 288px;
+  --esri-oriented-imagery-viewer-min-height: 348px;
+
+  // overrides
+  --calcite-dialog-size-x: 210px;
+  --calcite-dialog-min-size-y: 90px;
+  --calcite-font-weight-medium: $font-weight;
+  --calcite-font-size-0: $font-size;
+  --calcite-icon-size: var(--esri-oriented-imagery-viewer-action-icon-size);
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 1;
+  overflow: hidden;
+}
+
+@mixin wrapper() {
+  @include defaultBoxShadow();
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto 10px;
+  width: 106px;
+  height: 78px;
+}
+
+@mixin ToolContainer($height: 140px) {
+  @include boxShadow("0 0 1px rgba(0, 0, 0, 0.3)");
+
+  position: absolute;
+  bottom: 0;
+  align-items: center;
+  z-index: 1;
+  margin: 0 1%;
+  margin-top: auto;
+  border: 1px solid var(--calcite-color-border-2);
+  width: 98%;
+  height: #{$height};
+}
+
+@mixin Overlays($arg: 140px) {
+  @include ToolContainer($arg);
+
+  overflow-y: auto;
+
+  &-layer-list {
+    padding: 0 var(--calcite-spacing-md);
+  }
+
+  &-switch {
+    padding: 0 var(--calcite-spacing-md);
+  }
+}
+
+@mixin orientedImageryViewer() {
+  .esri-imagery-viewer {
+    width: 100%;
+    height: 100%;
+  }
+
+  .esri-oriented-imagery-viewer {
+    @include orientedImageryViewerBase();
+
+    width: 100%;
+    min-width: var(--esri-oriented-imagery-viewer-min-width);
+    height: 100%;
+    min-height: var(--esri-oriented-imagery-viewer-min-height);
+
+    &:has(.esri-widget .esri-oriented-imagery-viewer__image-overlays-no-result) {
+      --esri-oriented-imagery-viewer-min-height: 420px;
+    }
+
+    &__body {
+      display: flex;
+      flex: none;
+      flex-direction: column;
+      flex-grow: 1;
+      align-self: stretch;
+      order: 1;
+      height: 100%;
+
+      &-current-coverage {
+        --calcite-ui-icon-color: var(--calcite-color-status-danger);
+      }
+
+      &-additional {
+        &-camera-locations {
+          --calcite-ui-icon-color: var(--calcite-color-brand);
+        }
+
+        &-coverage {
+          --calcite-ui-icon-color: var(--calcite-color-status-info);
+        }
+      }
+
+      &-footprint {
+        --calcite-ui-icon-color: var(--calcite-color-status-success);
+      }
+    }
+
+    &__carousel {
+      @include ToolContainer();
+
+      &-container {
+        display: inline-block;
+        height: auto;
+        overflow: auto hidden;
+      }
+
+      header {
+        --calcite-font-weight-medium: $font-weight--light;
+        --calcite-font-size-0: $font-size--tiny;
+      }
+
+      &-item {
+        width: 100px;
+        height: 70px;
+
+        &-wrapper {
+          @include wrapper();
+        }
+
+        &-wrapper--selected {
+          @include wrapper();
+
+          border: 2px solid var(--calcite-color-brand);
+        }
+      }
+
+      &-content {
+        display: flex;
+      }
+    }
+
+    &__close {
+      display: flex;
+      flex-direction: row;
+      flex-grow: 0;
+      align-items: center;
+      justify-content: center;
+      order: 7;
+      background: var(--calcite-color-foreground-1);
+      width: 48px;
+      height: 59px;
+    }
+
+    &__image-enhancement {
+      &-wrapper {
+        @include ToolContainer();
+      }
+
+      &-tools {
+        display: flex;
+      }
+
+      &-tool-container {
+        margin-block: 2px;
+        padding-inline: 0.75rem;
+        width: 50%;
+      }
+    }
+
+    &__image-overlays {
+      @include Overlays();
+
+      &-container {
+        display: flex;
+        height: auto;
+      }
+    }
+
+    &__image-overlays-no-result {
+      @include Overlays(auto);
+    }
+
+    &__image-overlays-increased-height {
+      @include Overlays(200px);
+    }
+
+    &__measurement-results {
+      width: auto;
+      height: fit-content;
+    }
+
+    &__measurements-table {
+      margin-block-start: var(--calcite-spacing-sm);
+    }
+
+    &__measurements-bar {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    &__measurements-button {
+      display: flex;
+    }
+
+    &__measurement-display {
+      margin-block-end: var(--calcite-spacing-xxs);
+      text-align: center;
+    }
+
+    &__viewer {
+      display: flex;
+      flex-grow: 1;
+      margin: 0;
+      cursor: url("data:text/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20height%3D%2226%22%20width%3D%2226%22%3E%0A%3Cpath%20stroke%3D%22%23000%22%20stroke-width%3D%221px%22%20fill%3D%22%23fff%22%20d%3D%22m15.3%2020.5s6.38-6.73%204.64-8.24-3.47%201.01-3.47%201.01%203.61-5.72%201.41-6.49c-2.2-0.769-3.33%204.36-3.33%204.36s0.873-5.76-1.06-5.76-1.58%205.39-1.58%205.39-0.574-4.59-2.18-4.12c-1.61%200.468-0.572%205.51-0.572%205.51s-1.58-4.89-2.93-3.79c-1.35%201.11%200.258%205.25%200.572%206.62%200.836%202.43%202.03%202.94%202.17%205.55%22%2F%3E%0A%3C%2Fsvg%3E%0A");
+      width: 100%;
+
+      &--hidden {
+        display: none;
+      }
+
+      &-container {
+        display: flex;
+        flex: none;
+        flex-grow: 1;
+        align-self: stretch;
+        order: 1;
+        border-top: 1px solid var(--calcite-color-border-3);
+        border-radius: 0 0 3px 3px;
+        background: var(--calcite-color-foreground-1);
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__alert {
+      position: absolute;
+      inset-block-end: var(--calcite-spacing-md);
+      inset-inline: var(--calcite-spacing-md);
+    }
+
+    @keyframes rotateOrientedImageryNavigationTool {
+      0% {
+        transform: rotate(var(--oi-navigation-tool-rotation-from, 0deg));
+      }
+
+      100% {
+        transform: rotate(var(--oi-navigation-tool-rotation-to, 0deg));
+      }
+    }
+
+    &__message-box {
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      padding: 0 25%;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      word-break: break-word;
+      font-size: $font-size__body;
+    }
+
+    &__navigation {
+      transform: rotate(var(--oi-navigation-tool-rotation-to, 0deg));
+
+      &-animate {
+        animation: rotateOrientedImageryNavigationTool 0.7s linear forwards;
+      }
+
+      &-feature {
+        fill: var(--calcite-color-brand);
+        stroke: var(--calcite-color-foreground-1);
+        stroke-width: 1;
+
+        &.selected {
+          fill: var(--calcite-color-status-danger);
+        }
+
+        &-path {
+          pointer-events: none;
+
+          &-stop {
+            &-offset-0 {
+              stop-color: var(--calcite-color-status-danger);
+              stop-opacity: 0.4;
+            }
+
+            &-offset-1 {
+              stop-color: var(--calcite-color-status-danger);
+              stop-opacity: 0.2;
+            }
+          }
+        }
+      }
+
+      &-pointer {
+        fill: var(--calcite-color-foreground-1);
+        fill-rule: evenodd;
+        stroke: rgb(0 0 0 / 0%);
+        stroke-dasharray: none;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        stroke-miterlimit: 4;
+        stroke-width: 0;
+
+        &-north {
+          fill: var(--calcite-color-status-danger);
+        }
+      }
+
+      &-wrapper {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        overflow: hidden;
+
+        &--zoomed {
+          transform: scale(1.5);
+          transform-origin: bottom right;
+        }
+
+        &-boundary {
+          fill: var(--calcite-color-foreground-1);
+          fill-opacity: 0.25;
+          stroke: var(--calcite-color-border-2);
+        }
+      }
+
+      &-sector {
+        fill: none;
+
+        &-separator {
+          stroke: var(--calcite-color-border-2);
+          stroke-width: 1;
+        }
+
+        &-cross {
+          stroke: var(--calcite-color-status-danger);
+          stroke-width: 1;
+        }
+
+        &-enabled {
+          fill: var(--calcite-color-foreground-1);
+          stroke: var(--calcite-color-border-2);
+          stroke-width: 1;
+        }
+
+        &-disabled {
+          fill: var(--calcite-color-foreground-3);
+          stroke: var(--calcite-color-border-2);
+          stroke-width: 1;
+        }
+
+        &-outer {
+          fill: var(--calcite-color-foreground-1);
+          fill-opacity: 0.4;
+          stroke: none;
+        }
+      }
+    }
+
+    &__pro {
+      .esri-oriented-imagery-viewer {
+        position: static;
+        width: 100%;
+        max-width: unset;
+        height: 100%;
+        max-height: unset;
+      }
+    }
+
+    &__sketch-tools {
+      display: flex;
+      position: absolute;
+      bottom: 0;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+}
+
+@if $include_OrientedImageryViewer == true {
+  @include orientedImageryViewer();
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"utils.d.ts","sourceRoot":"","sources":["../../src/terrain/utils.ts"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAC,MAAM,EAAC,MAAM,eAAe,CAAC;AAG1C,wBAAgB,kBAAkB,CAChC,MAAM,EAAE,MAAM,EACd,IAAI,EAAE;IACJ,EAAE,EAAE,MAAM,CAAC;IACX,KAAK,CAAC,EAAE,OAAO,CAAC;IAChB,WAAW,CAAC,EAAE,OAAO,CAAC;CACvB,uCAyBF"}

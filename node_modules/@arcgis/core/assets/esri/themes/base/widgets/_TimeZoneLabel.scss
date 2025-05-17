@@ -1,0 +1,58 @@
+@mixin timeZoneLabel() {
+  .esri-time-zone-label {
+    @include defaultBoxShadow();
+
+    display: inline-flex;
+    background-color: var(--calcite-color-foreground-1);
+
+    &__badge {
+      display: flex;
+      padding-block: var(--calcite-spacing-sm);
+      padding-inline: var(--calcite-spacing-sm);
+      color: var(--calcite-color-text-1);
+
+      &--disabled {
+        opacity: var(--calcite-opacity-disabled);
+      }
+
+      &--hidden {
+        display: none;
+      }
+
+      &-icon {
+        align-self: center;
+      }
+    }
+
+    &__name {
+      --calcite-color-background: transparent;
+      --calcite-color-border-input: transparent;
+      --calcite-font-weight-medium: normal;
+
+      pointer-events: none;
+
+      &--hidden {
+        display: none;
+      }
+    }
+
+    &__label {
+      --calcite-label-margin-bottom: 0;
+
+      align-items: center;
+      padding-inline: var(--calcite-spacing-sm);
+
+      &--disabled {
+        opacity: var(--calcite-opacity-disabled);
+      }
+
+      &--hidden {
+        display: none;
+      }
+    }
+  }
+}
+
+@if $include_TimeZoneLabel == true {
+  @include timeZoneLabel();
+}

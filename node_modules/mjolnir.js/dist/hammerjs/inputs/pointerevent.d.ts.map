@@ -1,0 +1,1 @@
+{"version":3,"file":"pointerevent.d.ts","sourceRoot":"","sources":["../../../src/hammerjs/inputs/pointerevent.ts"],"names":[],"mappings":"AACA,OAAO,EAAC,KAAK,EAAC,0BAAuB;AACrC,OAAO,KAAK,EAAC,OAAO,EAAC,sBAAmB;AAaxC;;GAEG;AACH,qBAAa,iBAAkB,SAAQ,KAAK;IAC1C,KAAK,EAAE,YAAY,EAAE,CAAC;gBAEV,OAAO,EAAE,OAAO;IAS5B;;OAEG;IACH,OAAO,CAAC,EAAE,EAAE,YAAY;CA4CzB"}

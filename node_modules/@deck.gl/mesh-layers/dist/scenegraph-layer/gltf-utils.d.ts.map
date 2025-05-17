@@ -1,0 +1,1 @@
+{"version":3,"file":"gltf-utils.d.ts","sourceRoot":"","sources":["../../src/scenegraph-layer/gltf-utils.ts"],"names":[],"mappings":"AAKA,OAAO,KAAK,EAAC,SAAS,EAA4B,MAAM,iBAAiB,CAAC;AAE1E,wBAAsB,iBAAiB,CAAC,WAAW,EAAE;IAAC,MAAM,EAAE,SAAS,EAAE,CAAA;CAAC,GAAG,OAAO,CAAC,IAAI,CAAC,CAezF"}

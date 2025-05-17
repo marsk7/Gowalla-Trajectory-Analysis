@@ -1,0 +1,76 @@
+import { AttrRecognizer } from "./attribute.js";
+import { InputDirection } from "../input/input-consts.js";
+import { RecognizerState } from "../recognizer/recognizer-state.js";
+import { TOUCH_ACTION_PAN_X, TOUCH_ACTION_PAN_Y } from "../touchaction/touchaction-Consts.js";
+const EVENT_NAMES = ['', 'start', 'move', 'end', 'cancel', 'up', 'down', 'left', 'right'];
+/**
+ * Pan
+ * Recognized when the pointer is down and moved in the allowed direction.
+ */
+export class PanRecognizer extends AttrRecognizer {
+    constructor(options = {}) {
+        super({
+            enable: true,
+            pointers: 1,
+            event: 'pan',
+            threshold: 10,
+            direction: InputDirection.All,
+            ...options
+        });
+        this.pX = null;
+        this.pY = null;
+    }
+    getTouchAction() {
+        const { options: { direction } } = this;
+        const actions = [];
+        if (direction & InputDirection.Horizontal) {
+            actions.push(TOUCH_ACTION_PAN_Y);
+        }
+        if (direction & InputDirection.Vertical) {
+            actions.push(TOUCH_ACTION_PAN_X);
+        }
+        return actions;
+    }
+    getEventNames() {
+        return EVENT_NAMES.map((suffix) => this.options.event + suffix);
+    }
+    directionTest(input) {
+        const { options } = this;
+        let hasMoved = true;
+        let { distance } = input;
+        let { direction } = input;
+        const x = input.deltaX;
+        const y = input.deltaY;
+        // lock to axis?
+        if (!(direction & options.direction)) {
+            if (options.direction & InputDirection.Horizontal) {
+                direction =
+                    x === 0 ? InputDirection.None : x < 0 ? InputDirection.Left : InputDirection.Right;
+                hasMoved = x !== this.pX;
+                distance = Math.abs(input.deltaX);
+            }
+            else {
+                direction = y === 0 ? InputDirection.None : y < 0 ? InputDirection.Up : InputDirection.Down;
+                hasMoved = y !== this.pY;
+                distance = Math.abs(input.deltaY);
+            }
+        }
+        input.direction = direction;
+        return hasMoved && distance > options.threshold && Boolean(direction & options.direction);
+    }
+    attrTest(input) {
+        return (super.attrTest(input) &&
+            (Boolean(this.state & RecognizerState.Began) ||
+                (!(this.state & RecognizerState.Began) && this.directionTest(input))));
+    }
+    emit(input) {
+        this.pX = input.deltaX;
+        this.pY = input.deltaY;
+        const direction = InputDirection[input.direction].toLowerCase();
+        if (direction) {
+            input.additionalEvent = this.options.event + direction;
+        }
+        super.emit(input);
+    }
+}
+//# sourceMappingURL=pan.js.map

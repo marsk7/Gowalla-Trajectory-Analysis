@@ -1,0 +1,11 @@
+import "../interfaces";
+
+export type AttributeTableElement = __esri.tablesElements.AttributeTableElement;
+export type AttributeTableFieldElement = __esri.tablesElements.AttributeTableFieldElement;
+export const AttributeTableFieldElement: typeof __esri.tablesElements.AttributeTableFieldElement;
+export type AttributeTableGroupElement = __esri.tablesElements.AttributeTableGroupElement;
+export const AttributeTableGroupElement: typeof __esri.tablesElements.AttributeTableGroupElement;
+export type AttributeTableRelationshipElement = __esri.tablesElements.AttributeTableRelationshipElement;
+export const AttributeTableRelationshipElement: typeof __esri.tablesElements.AttributeTableRelationshipElement;
+export type AttributeTableAttachmentElement = __esri.tablesElements.AttributeTableAttachmentElement;
+export const AttributeTableAttachmentElement: typeof __esri.tablesElements.AttributeTableAttachmentElement;

@@ -1,0 +1,1 @@
+{"version":3,"file":"xml-loader.d.ts","sourceRoot":"","sources":["../src/xml-loader.ts"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAmB,aAAa,EAAC,MAAM,0BAA0B,CAAC;AAC9E,OAAO,KAAK,EAAC,eAAe,EAAC,mCAAgC;AAO7D,MAAM,MAAM,gBAAgB,GAAG,aAAa,GAAG;IAC7C,GAAG,CAAC,EAAE,eAAe,CAAC;CACvB,CAAC;AAEF;;GAEG;AACH,eAAO,MAAM,SAAS,KA2B6C,CAAC"}

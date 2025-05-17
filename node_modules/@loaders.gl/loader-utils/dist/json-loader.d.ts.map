@@ -1,0 +1,1 @@
+{"version":3,"file":"json-loader.d.ts","sourceRoot":"","sources":["../src/json-loader.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAmB,aAAa,EAAC,0BAAuB;AACpE,OAAO,KAAK,EAAC,KAAK,EAAE,UAAU,EAAC,MAAM,oBAAoB,CAAC;AAM1D,MAAM,MAAM,iBAAiB,GAAG,aAAa,CAAC;AAE9C;;;GAGG;AACH,eAAO,MAAM,UAAU;uBACQ,KAAK;wBACJ,UAAU;;;;;;;;;;;;CAYiC,CAAC;AAG5E,iBAAS,aAAa,CAAC,IAAI,KAAA,OAE1B"}

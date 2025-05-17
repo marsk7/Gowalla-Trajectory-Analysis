@@ -1,0 +1,162 @@
+@mixin utilityNetworkAssociations() {
+  .esri-un-associations {
+    $header_height: 48px;
+    $panel_padding: 0.5rem;
+
+    &__action {
+      height: $header_height;
+
+      &-refresh {
+        --calcite-color-icon-color: #077ac2;
+      }
+    }
+
+    &__block {
+      &-content {
+        margin: 0;
+        border: {
+          bottom: none;
+        }
+      }
+
+      &-section-settings {
+        padding: 0;
+        border: {
+          style: none;
+        }
+      }
+    }
+
+    &__combobox {
+      max-width: 300px;
+    }
+
+    &__combobox-item {
+      max-width: 300px;
+    }
+
+    &__div-controls {
+      &-main {
+        display: grid;
+        gap: $panel_padding;
+        background: var(--calcite-color-foreground-1) /* color */;
+        padding: $panel_padding 0;
+      }
+
+      &-symbol-picker {
+        margin: {
+          top: 0.75rem;
+        }
+      }
+    }
+
+    &__dropdown {
+      border: 1px solid var(--calcite-color-border-input);
+
+      &-item {
+        &-line-cap {
+          height: 10px;
+          background: {
+            position: center;
+            repeat: no-repeat;
+          }
+        }
+
+        &-line-pattern {
+          height: 3px;
+        }
+      }
+
+      &-selected-item {
+        &-line-cap {
+          width: 100%;
+          height: 10px;
+          background: {
+            position: center;
+            repeat: no-repeat;
+            size: 275px 10px;
+          }
+        }
+
+        &-line-pattern {
+          width: 100%;
+          height: 3px;
+        }
+      }
+
+      &-trigger {
+        display: flex;
+        align-items: center;
+        margin: 0 6px;
+        width: 100%;
+        height: 24px;
+      }
+    }
+
+    &__label {
+      height: 1rem;
+
+      &-and-combobox {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-and-slider {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-and-toggle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: inherit;
+        padding: {
+          right: 0.25rem;
+        }
+      }
+    }
+
+    &__panel {
+      max-height: calc(100vh - $header_height - $panel_padding);
+    }
+
+    &__slider {
+      padding: 0 0.5rem;
+    }
+
+    &__status-icon {
+      &-container {
+        width: $header_height;
+        height: $header_height;
+      }
+
+      &-warning {
+        --calcite-color-icon-color: #edd317;
+
+        padding: 16px;
+      }
+    }
+
+    &__switch {
+      align-self: center;
+      padding: 0.5rem;
+
+      &-container {
+        display: flex;
+        width: $header_height;
+        height: $header_height;
+      }
+    }
+
+    &__widget-container {
+      margin: 0;
+      border-bottom: none;
+      width: 350px;
+    }
+  }
+}
+
+@if $include_UtilityNetworkAssociations == true {
+  @include utilityNetworkAssociations();
+}

@@ -1,0 +1,193 @@
+// deck.gl
+// SPDX-License-Identifier: MIT
+// Copyright (c) vis.gl contributors
+import { createRenderTarget } from "./utils.js";
+import { joinLayerBounds, makeViewport, getRenderBounds } from "../utils/projection-utils.js";
+/**
+ * Manages the lifecycle of the terrain cover (draped textures over a terrain mesh).
+ * One terrain cover is created for each unique terrain layer (primitive layer with operation:terrain).
+ * It is updated when the terrain source layer's mesh changes or when any of the terrainDrawMode:drape
+ * layers requires redraw.
+ * During the draw call of a terrain layer, the drape texture is overlaid on top of the layer's own color.
+ */
+export class TerrainCover {
+    constructor(targetLayer) {
+        this.isDirty = true;
+        /** Viewport used to draw into the texture */
+        this.renderViewport = null;
+        /** Bounds of the terrain cover texture, in cartesian space */
+        this.bounds = null;
+        this.layers = [];
+        /** Cached version of targetLayer.getBounds() */
+        this.targetBounds = null;
+        /** targetBounds in cartesian space */
+        this.targetBoundsCommon = null;
+        this.targetLayer = targetLayer;
+        this.tile = getTile(targetLayer);
+    }
+    get id() {
+        return this.targetLayer.id;
+    }
+    /** returns true if the target layer is still in use (i.e. not finalized) */
+    get isActive() {
+        return Boolean(this.targetLayer.getCurrentLayer());
+    }
+    shouldUpdate({ targetLayer, viewport, layers, layerNeedsRedraw }) {
+        if (targetLayer) {
+            this.targetLayer = targetLayer;
+        }
+        const sizeChanged = viewport ? this._updateViewport(viewport) : false;
+        let layersChanged = layers ? this._updateLayers(layers) : false;
+        if (layerNeedsRedraw) {
+            for (const id of this.layers) {
+                if (layerNeedsRedraw[id]) {
+                    layersChanged = true;
+                    // console.log('layer needs redraw', id);
+                    break;
+                }
+            }
+        }
+        return layersChanged || sizeChanged;
+    }
+    /** Compare layers with the last version. Only rerender if necessary. */
+    _updateLayers(layers) {
+        let needsRedraw = false;
+        layers = this.tile ? getIntersectingLayers(this.tile, layers) : layers;
+        if (layers.length !== this.layers.length) {
+            needsRedraw = true;
+            // console.log('layers count changed', this.layers.length, '>>', layers.length);
+        }
+        else {
+            for (let i = 0; i < layers.length; i++) {
+                const id = layers[i].id;
+                if (id !== this.layers[i]) {
+                    needsRedraw = true;
+                    // console.log('layer added/removed', id);
+                    break;
+                }
+            }
+        }
+        if (needsRedraw) {
+            this.layers = layers.map(layer => layer.id);
+        }
+        return needsRedraw;
+    }
+    /** Compare viewport and terrain bounds with the last version. Only rerender if necesary. */
+    // eslint-disable-next-line max-statements
+    _updateViewport(viewport) {
+        const targetLayer = this.targetLayer;
+        let shouldRedraw = false;
+        if (this.tile && 'boundingBox' in this.tile) {
+            if (!this.targetBounds) {
+                shouldRedraw = true;
+                this.targetBounds = this.tile.boundingBox;
+                const bottomLeftCommon = viewport.projectPosition(this.targetBounds[0]);
+                const topRightCommon = viewport.projectPosition(this.targetBounds[1]);
+                this.targetBoundsCommon = [
+                    bottomLeftCommon[0],
+                    bottomLeftCommon[1],
+                    topRightCommon[0],
+                    topRightCommon[1]
+                ];
+            }
+        }
+        else if (this.targetBounds !== targetLayer.getBounds()) {
+            // console.log('bounds changed', this.bounds, '>>', newBounds);
+            shouldRedraw = true;
+            this.targetBounds = targetLayer.getBounds();
+            this.targetBoundsCommon = joinLayerBounds([targetLayer], viewport);
+        }
+        if (!this.targetBoundsCommon) {
+            return false;
+        }
+        const newZoom = Math.ceil(viewport.zoom + 0.5);
+        // If the terrain layer is bound to a tile, always render a texture that cover the whole tile.
+        // Otherwise, use the smaller of layer bounds and the viewport bounds.
+        if (this.tile) {
+            this.bounds = this.targetBoundsCommon;
+        }
+        else {
+            const oldZoom = this.renderViewport?.zoom;
+            shouldRedraw = shouldRedraw || newZoom !== oldZoom;
+            const newBounds = getRenderBounds(this.targetBoundsCommon, viewport);
+            const oldBounds = this.bounds;
+            shouldRedraw = shouldRedraw || !oldBounds || newBounds.some((x, i) => x !== oldBounds[i]);
+            this.bounds = newBounds;
+        }
+        if (shouldRedraw) {
+            this.renderViewport = makeViewport({
+                bounds: this.bounds,
+                zoom: newZoom,
+                viewport
+            });
+        }
+        return shouldRedraw;
+    }
+    getRenderFramebuffer() {
+        if (!this.renderViewport || this.layers.length === 0) {
+            return null;
+        }
+        if (!this.fbo) {
+            this.fbo = createRenderTarget(this.targetLayer.context.device, { id: this.id });
+        }
+        return this.fbo;
+    }
+    getPickingFramebuffer() {
+        if (!this.renderViewport || (this.layers.length === 0 && !this.targetLayer.props.pickable)) {
+            return null;
+        }
+        if (!this.pickingFbo) {
+            this.pickingFbo = createRenderTarget(this.targetLayer.context.device, {
+                id: `${this.id}-picking`,
+                interpolate: false
+            });
+        }
+        return this.pickingFbo;
+    }
+    filterLayers(layers) {
+        return layers.filter(({ id }) => this.layers.includes(id));
+    }
+    delete() {
+        const { fbo, pickingFbo } = this;
+        if (fbo) {
+            fbo.colorAttachments[0].destroy();
+            fbo.destroy();
+        }
+        if (pickingFbo) {
+            pickingFbo.colorAttachments[0].destroy();
+            pickingFbo.destroy();
+        }
+    }
+}
+/**
+ * Remove layers that do not overlap with the current terrain cover.
+ * This implementation only has effect when a TileLayer is overlaid on top of a TileLayer
+ */
+function getIntersectingLayers(sourceTile, layers) {
+    return layers.filter(layer => {
+        const tile = getTile(layer);
+        if (tile) {
+            return intersect(sourceTile.boundingBox, tile.boundingBox);
+        }
+        return true;
+    });
+}
+/** If layer is the descendent of a TileLayer, return the corresponding tile. */
+function getTile(layer) {
+    while (layer) {
+        // @ts-expect-error tile may not exist
+        const { tile } = layer.props;
+        if (tile) {
+            return tile;
+        }
+        layer = layer.parent;
+    }
+    return null;
+}
+function intersect(b1, b2) {
+    if (b1 && b2) {
+        return b1[0][0] < b2[1][0] && b2[0][0] < b1[1][0] && b1[0][1] < b2[1][1] && b2[0][1] < b1[1][1];
+    }
+    return false;
+}
+//# sourceMappingURL=terrain-cover.js.map

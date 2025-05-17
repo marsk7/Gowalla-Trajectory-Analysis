@@ -1,0 +1,61 @@
+@mixin histogram() {
+  .esri-histogram {
+    width: 100%;
+    height: 100%;
+    direction: ltr;
+  }
+
+  .esri-histogram__content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .esri-histogram__svg {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .esri-histogram__data-line {
+    stroke: #888;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+  }
+
+  .esri-histogram__label {
+    direction: ltr;
+    font-size: 12px;
+    stroke: black;
+    stroke-width: 0;
+    unicode-bidi: plaintext;
+  }
+
+  .esri-histogram__average-data-line {
+    stroke: #444;
+  }
+
+  .esri-histogram__average-symbol {
+    font-family: "Georgia, serif", sans-serif;
+    font-style: italic;
+  }
+
+  .esri-expand__panel-content .esri-histogram {
+    width: 100%;
+  }
+
+  [dir="rtl"] {
+    .esri-histogram {
+      direction: rtl;
+
+      .esri-histogram__average-label {
+        direction: rtl;
+        unicode-bidi: plaintext;
+      }
+    }
+  }
+}
+
+@if $include_Histogram == true {
+  @include histogram();
+}

@@ -1,0 +1,50 @@
+{
+    "name": "@types/d3-color",
+    "version": "1.4.5",
+    "description": "TypeScript definitions for d3-color",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/d3-color",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Tom Wanzek",
+            "githubUsername": "tomwanzek",
+            "url": "https://github.com/tomwanzek"
+        },
+        {
+            "name": "Alex Ford",
+            "githubUsername": "gustavderdrache",
+            "url": "https://github.com/gustavderdrache"
+        },
+        {
+            "name": "Boris Yankov",
+            "githubUsername": "borisyankov",
+            "url": "https://github.com/borisyankov"
+        },
+        {
+            "name": "denisname",
+            "githubUsername": "denisname",
+            "url": "https://github.com/denisname"
+        },
+        {
+            "name": "Hugues Stefanski",
+            "githubUsername": "ledragon",
+            "url": "https://github.com/ledragon"
+        },
+        {
+            "name": "Nathan Bierema",
+            "githubUsername": "Methuselah96",
+            "url": "https://github.com/Methuselah96"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/d3-color"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "7a11fe86ca81bb70c55d2abc317edfb7c7acb3edb223b0a7752ac766d05ff653",
+    "typeScriptVersion": "4.5"
+}

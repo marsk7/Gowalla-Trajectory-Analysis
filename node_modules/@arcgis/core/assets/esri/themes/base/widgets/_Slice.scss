@@ -1,0 +1,49 @@
+@mixin slice() {
+  .esri-slice {
+    --layer-item-background: var(--calcite-color-foreground-2);
+
+    &__container {
+      display: flex;
+      padding: var(--esri-widget-padding-y) var(--esri-widget-padding-x);
+      overflow-y: auto;
+    }
+
+    &__error {
+      color: $font-color--error;
+    }
+
+    &__container,
+    &__hint {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing;
+    }
+
+    &__error,
+    &__hint {
+      overflow: hidden;
+      animation: esri-fade-in 250ms ease-in-out;
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    &__layer-item {
+      --calcite-color-foreground-2: var(--layer-item-background);
+      --calcite-color-foreground-1: var(--layer-item-background);
+    }
+
+    &__actions {
+      display: flex;
+      flex-flow: column;
+      gap: $cap-spacing--half;
+      justify-content: center;
+    }
+  }
+}
+
+@if $include_Slice == true {
+  @include slice();
+}

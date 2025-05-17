@@ -1,0 +1,18 @@
+// loaders.gl
+// SPDX-License-Identifier: MIT
+// Copyright (c) vis.gl contributors
+import { ImageLoader } from '@loaders.gl/images';
+import { getImageUrls } from "./load-image.js";
+import { deepLoad } from "./deep-load.js";
+export async function loadImageTextureArray(count, getUrl, options = {}) {
+    const imageUrls = await getImageArrayUrls(count, getUrl, options);
+    return await deepLoad(imageUrls, ImageLoader.parse, options);
+}
+export async function getImageArrayUrls(count, getUrl, options = {}) {
+    const promises = [];
+    for (let index = 0; index < count; index++) {
+        const promise = getImageUrls(getUrl, options, { index });
+        promises.push(promise);
+    }
+    return await Promise.all(promises);
+}

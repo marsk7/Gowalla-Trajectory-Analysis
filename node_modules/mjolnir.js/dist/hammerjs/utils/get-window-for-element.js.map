@@ -1,0 +1,1 @@
+{"version":3,"file":"get-window-for-element.js","sourceRoot":"","sources":["../../../src/hammerjs/utils/get-window-for-element.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,MAAM,UAAU,mBAAmB,CAAC,OAAoB;IACtD,MAAM,GAAG,GAAG,OAAO,CAAC,aAAa,IAAK,OAA+B,CAAC;IACtE,OAAO,GAAG,CAAC,WAAW,CAAC;AACzB,CAAC"}

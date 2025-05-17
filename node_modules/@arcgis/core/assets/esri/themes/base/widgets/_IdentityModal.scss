@@ -1,0 +1,11 @@
+@mixin identityModal() {
+  .esri-identity-modal__info,
+  .esri-identity-modal__notice {
+    margin: 0;
+    margin-bottom: $cap-spacing;
+  }
+}
+
+@if $include_IdentityModal == true {
+  @include identityModal();
+}

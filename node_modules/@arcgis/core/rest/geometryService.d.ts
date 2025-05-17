@@ -1,0 +1,23 @@
+import "../interfaces";
+
+export const areasAndLengths: __esri.geometryService["areasAndLengths"];
+export const autoComplete: __esri.geometryService["autoComplete"];
+export const buffer: __esri.geometryService["buffer"];
+export const convexHull: __esri.geometryService["convexHull"];
+export const cut: __esri.geometryService["cut"];
+export const densify: __esri.geometryService["densify"];
+export const difference: __esri.geometryService["difference"];
+export const distance: __esri.geometryService["distance"];
+export const fromGeoCoordinateString: __esri.geometryService["fromGeoCoordinateString"];
+export const generalize: __esri.geometryService["generalize"];
+export const intersect: __esri.geometryService["intersect"];
+export const labelPoints: __esri.geometryService["labelPoints"];
+export const lengths: __esri.geometryService["lengths"];
+export const offset: __esri.geometryService["offset"];
+export const project: __esri.geometryService["project"];
+export const relation: __esri.geometryService["relation"];
+export const reshape: __esri.geometryService["reshape"];
+export const simplify: __esri.geometryService["simplify"];
+export const toGeoCoordinateString: __esri.geometryService["toGeoCoordinateString"];
+export const trimExtend: __esri.geometryService["trimExtend"];
+export const union: __esri.geometryService["union"];

@@ -1,0 +1,11 @@
+import "./interfaces";
+
+export type PointCloudRenderer = __esri.pointCloudRenderers.PointCloudRenderer;
+export type PointCloudClassBreaksRenderer = __esri.pointCloudRenderers.PointCloudClassBreaksRenderer;
+export const PointCloudClassBreaksRenderer: typeof __esri.pointCloudRenderers.PointCloudClassBreaksRenderer;
+export type PointCloudRGBRenderer = __esri.pointCloudRenderers.PointCloudRGBRenderer;
+export const PointCloudRGBRenderer: typeof __esri.pointCloudRenderers.PointCloudRGBRenderer;
+export type PointCloudStretchRenderer = __esri.pointCloudRenderers.PointCloudStretchRenderer;
+export const PointCloudStretchRenderer: typeof __esri.pointCloudRenderers.PointCloudStretchRenderer;
+export type PointCloudUniqueValueRenderer = __esri.pointCloudRenderers.PointCloudUniqueValueRenderer;
+export const PointCloudUniqueValueRenderer: typeof __esri.pointCloudRenderers.PointCloudUniqueValueRenderer;

@@ -1,0 +1,20 @@
+$earmark_size: 6px !default;
+
+@mixin navigationToggle() {
+  .esri-navigation-toggle {
+    display: flex;
+
+    &:not(.esri-navigation-toggle--horizontal) {
+      flex-direction: column;
+    }
+
+    calcite-button[appearance="outline-fill"] {
+      --calcite-color-foreground-1: var(--calcite-color-foreground-3);
+      --calcite-ui-icon-color: var(--calcite-color-text-1);
+    }
+  }
+}
+
+@if $include_NavigationToggle == true {
+  @include navigationToggle();
+}

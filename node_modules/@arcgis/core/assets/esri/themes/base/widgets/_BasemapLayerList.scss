@@ -1,0 +1,103 @@
+@mixin basemapLayerList() {
+  .esri-basemap-layer-list {
+    display: flex;
+  }
+
+  .esri-basemap-layer-list__editing-form {
+    display: flex;
+    height: 100%;
+  }
+
+  .esri-basemap-layer-list__filter-no-results {
+    @include layerListFilterNoResults();
+  }
+
+  .esri-basemap-layer-list__item {
+    @include layerListItem();
+  }
+
+  .esri-catalog-layer-list__item-table-icon {
+    margin-inline-end: 0;
+  }
+
+  .esri-basemap-layer-list__item-catalog-icon {
+    margin-inline-end: 0;
+  }
+
+  .esri-basemap-layer-list__item-action-image {
+    @include layerListActionImage();
+  }
+
+  .esri-basemap-layer-list__action-menu .esri-basemap-layer-list__action-group {
+    display: none;
+  }
+
+  .esri-basemap-layer-list__action-menu[open] .esri-basemap-layer-list__action-group {
+    display: flex;
+  }
+
+  .esri-basemap-layer-list__visible-icon {
+    visibility: hidden;
+  }
+
+  .esri-basemap-layer-list__item--active:hover,
+  .esri-basemap-layer-list__item--active:focus,
+  .esri-basemap-layer-list__item--active:focus-within {
+    > .esri-basemap-layer-list__visible-toggle > .esri-basemap-layer-list__visible-icon {
+      visibility: visible;
+    }
+  }
+
+  .esri-basemap-layer-list__status-indicator {
+    @include layerListStatusIndicator();
+  }
+
+  .esri-basemap-layer-list__publishing {
+    @include layerListPublishingIndicator();
+
+    animation: esri-basemap-layer-list__publishing-anim 2s normal infinite;
+  }
+
+  .esri-basemap-layer-list__updating {
+    @include layerListUpdatingIndicator();
+
+    animation: esri-basemap-layer-list__updating-anim 2s normal infinite;
+  }
+
+  .esri-basemap-layer-list__connection-status {
+    @include layerListConnectionStatus();
+  }
+
+  .esri-basemap-layer-list__connection-status--connected {
+    color: $connection-connected;
+  }
+
+  .esri-basemap-layer-list__item-content-bottom {
+    @include layerListContentBottom();
+  }
+
+  .esri-basemap-layer-list__item-content-bottom .esri-legend__service {
+    @include layerListLegend();
+  }
+
+  .esri-basemap-layer-list__item-message {
+    @include layerListContentBottom();
+  }
+
+  .esri-basemap-layer-list__editing {
+    padding-block: var(--calcite-spacing-sm);
+    padding-inline: var(--calcite-spacing-sm);
+  }
+
+  @keyframes esri-basemap-layer-list__updating-anim {
+    @include layerListUpdating();
+  }
+
+  @keyframes esri-basemap-layer-list__publishing-anim {
+    @include layerListPublishing();
+  }
+}
+
+@if $include_BasemapLayerList == true {
+  @include basemapLayerList();
+}

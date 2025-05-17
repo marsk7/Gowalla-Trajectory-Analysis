@@ -1,0 +1,126 @@
+@mixin feature() {
+  .esri-feature__title {
+    display: block;
+    word-break: break-word;
+    word-wrap: break-word;
+    font-size: $font-size;
+  }
+
+  .esri-feature calcite-icon {
+    box-sizing: content-box;
+  }
+
+  .esri-feature__attachments {
+    display: flex;
+  }
+
+  .esri-feature__loading-container {
+    display: flex;
+    justify-content: center;
+    padding: $cap-spacing 0;
+    width: 100%;
+  }
+
+  .esri-feature-relationship {
+    position: relative;
+  }
+
+  .esri-feature-relationship__list {
+    min-height: $list-item-height;
+  }
+
+  .esri-feature-relationship__list-item--hidden {
+    display: none;
+  }
+
+  .esri-feature-utility-network-associations {
+    position: relative;
+  }
+
+  .esri-feature__filter-container {
+    position: sticky;
+    top: $cap-spacing;
+    z-index: 1;
+    margin-bottom: $cap-spacing;
+  }
+
+  .esri-feature__feature-observer {
+    position: relative;
+    bottom: 20px;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .esri-feature__sticky-loading-container {
+    display: flex;
+    position: sticky;
+    bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    height: $list-item-height;
+    pointer-events: none;
+  }
+
+  .esri-icon-loading-indicator {
+    display: inline-block;
+  }
+
+  .esri-feature {
+    --calcite-color-background: $background-color;
+
+    width: 100%;
+  }
+
+  .esri-feature__content-element {
+    margin-bottom: $cap-spacing--double;
+    padding: 0 $side-spacing--half;
+
+    .esri-widget__heading {
+      line-height: 1.3;
+    }
+  }
+
+  .esri-feature__content-element:only-child,
+  .esri-feature__content-node--text {
+    margin-bottom: $cap-spacing--quarter;
+  }
+
+  .esri-feature__content-node {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .esri-feature__text {
+    line-height: 1.3;
+  }
+
+  // ATTACHMENTS
+  .esri-feature-attachments {
+    flex-flow: column wrap;
+    align-items: flex-start;
+  }
+
+  .esri-feature__last-edited-info {
+    padding-top: $cap-spacing--half;
+    font-size: $font-size--small;
+  }
+
+  //  RTL
+  [dir="rtl"] {
+    .esri-feature__attachments-title {
+      margin: 0 0 0 auto;
+    }
+
+    .esri-feature__attachments--list .esri-feature__attachment-item-mask {
+      margin-right: 0;
+      margin-left: $side-spacing--half;
+    }
+  }
+}
+
+@if $include_Feature == true {
+  @include feature();
+}

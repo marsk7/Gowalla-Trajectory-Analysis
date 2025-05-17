@@ -1,0 +1,63 @@
+@mixin weather() {
+  .esri-weather {
+    position: relative;
+    padding: var(--esri-widget-padding);
+    width: fit-content;
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing;
+      width: min-content;
+
+      // When there is an error we take up horizontal space, but not any vertical
+      // space. This way the widget maintains a constant width without us having
+      // to specify a fixed value.
+      &--has-error {
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+    }
+
+    &__selector {
+      display: flex;
+      flex-direction: row;
+      gap: $side-spacing--half;
+      align-items: center;
+    }
+
+    &__options {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing;
+
+      &--hidden {
+        display: none;
+      }
+    }
+
+    &__warning {
+      display: flex;
+      flex-direction: row;
+      gap: $side-spacing--half;
+      align-items: center;
+      font-size: $font-size--small;
+
+      calcite-icon {
+        color: var(--calcite-color-status-warning);
+      }
+    }
+
+    // Align calcite slider to the buttons, header, etc
+    &__labeled-slider calcite-slider {
+      margin: 0 -7px;
+      margin-bottom: -14px;
+    }
+  }
+}
+
+@if $include_Weather == true {
+  @include weather();
+}

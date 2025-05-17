@@ -1,0 +1,1 @@
+{"version":3,"file":"screen-pass-uniforms.d.ts","sourceRoot":"","sources":["../../src/passes/screen-pass-uniforms.ts"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAC,WAAW,EAAC,MAAM,eAAe,CAAC;AAS/C,MAAM,MAAM,WAAW,GAAG;IACxB,MAAM,EAAE,WAAW,CAAC;IACpB,OAAO,EAAE,CAAC,MAAM,EAAE,MAAM,CAAC,CAAC;CAC3B,CAAC;AAEF,eAAO,MAAM,cAAc;;;;;;CAMmB,CAAC"}

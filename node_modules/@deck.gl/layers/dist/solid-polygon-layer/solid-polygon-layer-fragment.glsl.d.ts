@@ -1,0 +1,3 @@
+declare const _default: "#version 300 es\n#define SHADER_NAME solid-polygon-layer-fragment-shader\n\nprecision highp float;\n\nin vec4 vColor;\n\nout vec4 fragColor;\n\nvoid main(void) {\n  fragColor = vColor;\n  // Fails to compile on some Android devices if geometry is never assigned (#8411)\n  geometry.uv = vec2(0.);\n\n  DECKGL_FILTER_COLOR(fragColor, geometry);\n}\n";
+export default _default;
+//# sourceMappingURL=solid-polygon-layer-fragment.glsl.d.ts.map

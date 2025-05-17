@@ -1,0 +1,358 @@
+@mixin slider() {
+  $slider-track-thickness: 2px !default;
+  $slider-anchor-thickness: 1px !default;
+  $slider-tick-thickness: 1px !default;
+  $slider-tick-length: 5px !default;
+  $slider-ticks-z-index: 0;
+
+  $slider-thumb-size: 16px !default;
+  $slider-thumb-offset: ($slider-thumb-size * 0.5) - 1 !default;
+  $slider-thumb-hover-scale: 1.2 !default;
+  $slider-thumb-size--hover: $slider-thumb-size * $slider-thumb-hover-scale !default;
+  $slider-thumb-offset--hover: ($slider-thumb-size--hover * 0.5) - 1 !default;
+
+  .esri-slider {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    direction: ltr;
+    user-select: none;
+  }
+
+  .esri-disabled {
+    pointer-events: none;
+
+    .esri-slider__content,
+    .esri-slider__min,
+    .esri-slider__max {
+      opacity: 0.4;
+    }
+  }
+
+  .esri-slider--reversed.esri-slider--horizontal {
+    flex-direction: row-reverse;
+  }
+
+  .esri-slider--reversed.esri-slider--vertical {
+    flex-direction: column;
+  }
+
+  .esri-slider--horizontal {
+    flex-direction: row;
+
+    .esri-slider__content {
+      height: auto;
+    }
+
+    .esri-slider__track {
+      width: 100%;
+      height: $slider-track-thickness;
+    }
+
+    .esri-slider__segment--interactive {
+      &:hover {
+        cursor: ew-resize;
+      }
+    }
+
+    .esri-slider__anchor {
+      width: $slider-anchor-thickness;
+      height: 100%;
+    }
+
+    .esri-slider__label {
+      top: -30px;
+      left: -50px;
+      margin: 0 $side-spacing--three-quarters;
+      text-align: center;
+    }
+
+    .esri-slider__label-input {
+      text-align: center;
+    }
+
+    .esri-slider__max,
+    .esri-slider__min {
+      flex: 0 0 auto;
+      margin: auto;
+      width: 50px;
+      height: auto;
+    }
+
+    .esri-slider__ticks {
+      top: 100%;
+      left: 0;
+      margin: $cap-spacing--three-quarters 0 0 0;
+      width: 100%;
+    }
+
+    .esri-slider__tick {
+      width: $slider-tick-thickness;
+      height: $slider-tick-length;
+    }
+
+    .esri-slider__tick-label {
+      margin-top: $cap-spacing--plus-half;
+    }
+  }
+
+  .esri-slider--vertical {
+    flex-direction: column-reverse;
+
+    .esri-slider__content {
+      flex-direction: column;
+      width: auto;
+    }
+
+    .esri-slider__track {
+      flex: 1 0 0;
+      flex-direction: column;
+      width: $slider-track-thickness;
+      height: 100%;
+    }
+
+    .esri-slider__segment--interactive {
+      &:hover {
+        cursor: ns-resize;
+      }
+    }
+
+    .esri-slider__anchor {
+      width: 100%;
+      height: $slider-anchor-thickness;
+    }
+
+    .esri-slider__label {
+      top: -10px;
+      left: 20px;
+      text-align: left;
+    }
+
+    .esri-slider__max,
+    .esri-slider__min {
+      margin: auto;
+      width: 100%;
+    }
+
+    .esri-slider__max {
+      flex: 0 0 22px;
+    }
+
+    .esri-slider__min {
+      flex: 0 0 22px;
+    }
+
+    .esri-slider__ticks {
+      top: 0;
+      left: 100%;
+      margin: 0 0 0 $side-spacing--three-quarters;
+    }
+
+    .esri-slider__tick {
+      width: $slider-tick-length;
+      height: $slider-tick-thickness;
+    }
+
+    .esri-slider__tick-label {
+      margin-left: 30px;
+    }
+  }
+
+  .esri-slider__content {
+    display: flex;
+    position: relative;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    margin: auto;
+    line-height: 0;
+  }
+
+  .esri-slider__track {
+    display: inline-block;
+    position: relative;
+    background-color: $border-color--contrast;
+    touch-action: none;
+  }
+
+  .esri-slider__segment {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+    touch-action: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .esri-slider__anchor {
+    position: absolute;
+    background-color: $background-color--inverse;
+    touch-action: none;
+    user-select: none;
+
+    &:focus {
+      .esri-slider__thumb,
+      .esri-slider__label {
+        outline: inherit;
+      }
+    }
+  }
+
+  .esri-slider__anchor--moving {
+    &:focus {
+      .esri-slider__thumb {
+        border: 3px solid $button-color--hover;
+        cursor: grabbing;
+      }
+    }
+
+    .esri-slider__label {
+      &:hover {
+        cursor: grabbing;
+      }
+    }
+
+    .esri-slider__label--interactive {
+      &:hover {
+        cursor: grabbing;
+      }
+    }
+  }
+
+  .esri-slider__thumb {
+    box-sizing: border-box;
+    position: absolute;
+    top: -$slider-thumb-offset;
+    left: -$slider-thumb-offset;
+    transition: all 125ms ease-in-out;
+    z-index: $slider-ticks-z-index + 1; // Make sure the thumb goes on top of the ticks
+    border: 2px solid $button-color;
+    border-radius: $slider-thumb-size;
+    background-color: $background-color;
+    width: $slider-thumb-size;
+    height: $slider-thumb-size;
+    touch-action: none;
+
+    &:hover {
+      top: -$slider-thumb-offset--hover;
+      left: -$slider-thumb-offset--hover;
+      border-width: 3px;
+      border-color: $button-color--hover;
+      cursor: grab;
+      width: $slider-thumb-size--hover;
+      height: $slider-thumb-size--hover;
+    }
+  }
+
+  .esri-slider__label {
+    position: absolute;
+    min-width: 80px;
+    line-height: 22px;
+
+    &:hover {
+      cursor: grab;
+    }
+  }
+
+  .esri-slider__label--interactive,
+  .esri-slider__max--interactive,
+  .esri-slider__min--interactive {
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  .esri-slider__label-input {
+    position: relative;
+    z-index: $slider-ticks-z-index + 1;
+    width: 100%;
+  }
+
+  .esri-slider__extra-content {
+    display: inline-block;
+  }
+
+  .esri-slider__max,
+  .esri-slider__min {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+  }
+
+  .esri-slider__max--interactive,
+  .esri-slider__min--interactive {
+    &:hover {
+      background-color: $background-color--offset;
+    }
+  }
+
+  .esri-slider__range-input {
+    padding: 1px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .esri-slider__ticks {
+    display: inline-block;
+    position: absolute;
+    z-index: $slider-ticks-z-index;
+    height: 100%;
+  }
+
+  .esri-slider__tick {
+    position: absolute;
+    background: $border-color--contrast;
+  }
+
+  .esri-slider__tick-label {
+    position: absolute;
+    width: max-content;
+  }
+
+  [dir="rtl"] {
+    .esri-slider__label,
+    .esri-slider__max,
+    .esri-slider__min,
+    .esri-slider__tick-label {
+      direction: rtl;
+      unicode-bidi: plaintext;
+    }
+
+    .esri-slider__range-input,
+    .esri-slider__label-input {
+      unicode-bidi: plaintext;
+    }
+  }
+}
+
+/*
+  #22969 - Focus outline does not appear as expected in Edge
+  Slider includes thumb/label elements in anchor focus outline when 'handle' is focused
+  Default browser style for focus outline is not included on parent element in Edge
+  This means using 'outline: inherit' on thumb/label elements does nothing
+  ... unless we define an outline on the parent
+*/
+@supports (-ms-ime-align: auto) {
+  .esri-slider {
+    &__anchor {
+      &:focus {
+        outline: 1px dotted black;
+      }
+    }
+  }
+}
+
+@if $include_Slider == true {
+  @include slider();
+}

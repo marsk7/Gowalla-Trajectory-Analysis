@@ -1,0 +1,357 @@
+@mixin featureTable() {
+  .esri-feature-table {
+    --icon-size: 64px;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    &__content {
+      overflow: hidden;
+
+      calcite-pagination {
+        justify-content: center;
+      }
+    }
+
+    &__collapsed {
+      min-width: 500px;
+
+      &:not(:last-child) {
+        border-inline-end: var(--calcite-border-width-sm) solid var(--calcite-color-text-2);
+        min-width: 300px;
+        max-width: 300px;
+      }
+    }
+
+    &__expanded {
+      display: flex;
+      min-width: 300px;
+
+      &:not(:last-child) {
+        border-inline-end: var(--calcite-border-width-sm) solid var(--calcite-color-text-2);
+      }
+
+      &.esri-feature-table__table-container--attachments:last-child {
+        flex: 2 1 0;
+
+        calcite-panel {
+          min-width: fit-content;
+
+          > div:first-child {
+            flex: 2 1 0;
+          }
+        }
+
+        .esri-feature-table__collapsed {
+          max-width: inherit;
+        }
+      }
+    }
+
+    &__table-container {
+      display: flex;
+      flex: 1 1 0;
+      margin: 0;
+      padding: 0;
+      min-height: 0;
+
+      calcite-panel > div {
+        overflow-y: auto;
+      }
+
+      calcite-panel div {
+        display: flex;
+        flex: 1 1 0;
+
+        .esri-feature-table__attachments-view__list {
+          flex: 1 1 0;
+          border-block-start: var(--calcite-border-width-sm) solid var(--calcite-color-text-2);
+          min-width: 480px;
+          overflow-y: auto;
+
+          &__filesize {
+            display: flex;
+            align-items: center;
+            margin-inline-end: var(--calcite-spacing-md);
+            cursor: default;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    &__table-navigation {
+      --calcite-label-margin-bottom: 0;
+
+      display: flex;
+      align-items: center;
+      background-color: var(--calcite-ui-foreground-1);
+      padding-block-start: var(--calcite-spacing-base); // Height of calcite progress component
+      width: 100%;
+
+      calcite-action:first-child {
+        transform: scaleX(-1);
+        border-inline-end: var(--calcite-border-width-sm) solid var(--calcite-color-border-3);
+      }
+
+      calcite-chip {
+        --calcite-chip-close-icon-color: var(--calcite-color-text-inverse);
+
+        margin-inline-end: var(--calcite-spacing-md);
+      }
+
+      calcite-label {
+        border-inline-end: var(--calcite-border-width-sm) solid var(--calcite-color-border-3);
+        padding-inline: var(--calcite-spacing-md);
+        height: 100%;
+      }
+
+      calcite-action {
+        display: flex;
+        overflow: hidden;
+      }
+
+      div:last-child {
+        display: flex;
+        float: inline-end;
+        align-items: center;
+        margin-inline: auto 0;
+        height: 100%;
+      }
+
+      calcite-action:last-child {
+        display: flex;
+        float: inline-end;
+        margin-inline: auto 0;
+      }
+    }
+
+    &__attachments-view {
+      border-block-start: var(--calcite-border-width-sm) solid var(--calcite-color-text-2);
+      min-width: 300px;
+
+      &__content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: var(--calcite-spacing-md);
+        width: 100%;
+      }
+
+      &__drop-area {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: var(--calcite-border-width-sm) dashed var(--calcite-color-border-input);
+        border-radius: var(--calcite-corner-radius-round);
+        width: 100%;
+
+        form {
+          display: flex;
+          justify-content: center;
+
+          fieldset {
+            border: none;
+
+            calcite-button {
+              margin-bottom: var(--calcite-spacing-sm);
+            }
+          }
+        }
+      }
+
+      &__icon {
+        margin-bottom: var(--calcite-spacing-md);
+        block-size: var(--icon-size);
+        inline-size: var(--icon-size);
+      }
+
+      &__information {
+        flex-direction: column;
+        padding: var(--calcite-spacing-md);
+        padding-inline-start: 0;
+        max-width: 200px;
+        overflow-y: auto;
+
+        calcite-icon {
+          margin-block-end: var(--calcite-spacing-md);
+        }
+
+        img {
+          margin-block-end: var(--calcite-spacing-md);
+        }
+
+        label {
+          color: var(--calcite-color-text-3);
+          font-weight: $font-weight;
+        }
+
+        span {
+          margin-block-end: var(--calcite-spacing-md);
+          color: var(--calcite-color-text-1);
+        }
+      }
+
+      &__list-item {
+        &--delete {
+          border-inline-start: var(--calcite-border-width-sm) solid var(--calcite-color-border-3);
+        }
+      }
+
+      &__list__thumbnail {
+        align-items: center;
+        justify-content: center;
+        margin-block: var(--calcite-spacing-sm);
+
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: var(--calcite-border-width-sm) solid var(--calcite-color-border-3);
+          border-radius: var(--calcite-corner-radius-round);
+          width: var(--icon-size);
+          height: var(--icon-size);
+          overflow: hidden;
+          color: $font-color;
+        }
+      }
+    }
+
+    &__menu-popover {
+      calcite-list {
+        // Avoid issues with menu growing outside of the viewport
+        // 260px is roughly the height of a filter and 5 menu items.
+        // No scrollbar should be shown until there are 6+ menu items.
+        max-width: 300px;
+        max-height: 260px;
+        overflow-y: auto;
+      }
+    }
+
+    .esri-grid {
+      background-color: inherit;
+
+      &__grid {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    vaadin-grid {
+      --_lumo-grid-secondary-border-color: var(--calcite-color-border-3);
+
+      border-bottom: none;
+      border-inline: none;
+      background-color: inherit;
+      color: inherit;
+      font-family: inherit;
+      font-size: $font-size;
+    }
+
+    vaadin-grid::part(body-cell) {
+      font-size: $font-size;
+
+      &:hover {
+        background-color: var(--calcite-color-foreground-2);
+      }
+    }
+
+    vaadin-grid::part(header-cell invalid) {
+      font-weight: var(--calcite-font-weight-bold);
+    }
+
+    vaadin-grid::part(body-cell invalid) {
+      color: var(--calcite-color-text-3);
+      font-style: italic;
+    }
+
+    vaadin-grid::part(header-cell) {
+      background-color: var(--calcite-color-background);
+    }
+
+    vaadin-grid::part(header-cell direction) {
+      border-bottom: var(--calcite-border-width-sm) solid var(--calcite-color-brand);
+      background-color: var(--calcite-color-foreground-1);
+    }
+
+    vaadin-grid::part(body-cell highlight) {
+      background-color: var(--calcite-color-foreground-3);
+    }
+
+    calcite-scrim > div:first-child {
+      position: relative;
+      max-width: 400px;
+      max-height: 100%;
+    }
+  }
+
+  .esri-feature-table__layer-switcher-menu {
+    display: flex;
+    align-items: center;
+  }
+
+  .esri-attachments-column__button,
+  .esri-column__show-related-records-button {
+    --calcite-offset-invert-focus: 2;
+  }
+
+  .esri-column__show-related-records-button {
+    display: flex;
+    height: 100%;
+  }
+
+  .esri-attachments-column__button {
+    overflow: hidden;
+
+    > div {
+      display: flex;
+      overflow: hidden;
+
+      > div:first-child {
+        margin-inline-end: var(--calcite-spacing-xxl);
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      span {
+        position: absolute;
+        inset-inline-end: var(--calcite-spacing-xxxl);
+        align-self: center;
+      }
+    }
+  }
+
+  .esri-attachments-column__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    > div:first-child {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 0;
+    }
+  }
+
+  .esri-attachments-column__button,
+  .esri-attachments-column__content {
+    calcite-icon,
+    img {
+      display: inline-flex;
+      margin-inline-end: var(--calcite-spacing-xxs);
+      max-width: var(--calcite-app-sizing-9);
+      max-height: var(--calcite-app-sizing-9);
+      vertical-align: middle;
+    }
+  }
+}
+
+@if $include_FeatureTable == true {
+  @include featureTable();
+}

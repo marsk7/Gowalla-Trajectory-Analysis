@@ -1,0 +1,259 @@
+@use "sass:color";
+
+@mixin directions() {
+  .esri-directions {
+    calcite-flow-item {
+      --calcite-color-background: var(--calcite-color-foreground-1);
+    }
+
+    &__accordion {
+      --calcite-accordion-border-color: transparent;
+    }
+
+    &__stop-container {
+      --calcite-list-border-color: transparent;
+      --calcite-list-background-color-hover: var(--calcite-color-foreground-1);
+
+      display: flex;
+      margin-block-start: var(--calcite-spacing-sm);
+    }
+
+    &__stop-list {
+      flex: 1 1 auto;
+    }
+
+    &__action-container {
+      display: flex;
+      margin-top: var(--calcite-spacing-sm);
+      margin-inline: var(--calcite-spacing-sm);
+    }
+
+    &__add-stop-button {
+      margin-inline-end: var(--calcite-spacing-xs);
+    }
+
+    &__departure-time {
+      --calcite-label-margin-bottom: 0;
+    }
+
+    &__departure-time-options {
+      display: flex;
+      margin-bottom: var(--calcite-spacing-sm);
+
+      calcite-input-date-picker,
+      calcite-input-time-picker {
+        flex: 1;
+      }
+    }
+
+    &__directions-header {
+      display: flex;
+      flex-direction: column;
+      line-height: var(--calcite-font-line-height-relative-snug);
+      color: var(--calcite-color-text-3);
+      font-size: var(--calcite-font-size--2);
+    }
+
+    &__header-stops {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--calcite-spacing-base) var(--calcite-spacing-xxs);
+      margin-block-end: var(--calcite-spacing-base);
+      font-size: var(--calcite-font-size--1);
+    }
+
+    &__directions-header-stop-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--calcite-color-text-1);
+      font-weight: var(--calcite-font-weight-medium);
+    }
+
+    &__edit-footer {
+      border-top: var(--calcite-border-width-sm) solid var(--calcite-color-border-3);
+      padding: var(--calcite-spacing-md);
+    }
+
+    &__edit-toolbar-container {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: flex-start;
+      margin: var(--calcite-spacing-md);
+    }
+
+    &__edit-toolbar {
+      display: flex;
+      flex-flow: row nowrap;
+      border-width: var(--calcite-border-width-sm);
+      border-style: solid;
+      border-radius: var(--calcite-corner-radius-round);
+      border-color: var(--calcite-color-foreground-3);
+      overflow: hidden;
+    }
+
+    &__solve-route {
+      border-inline-start: solid var(--calcite-border-width-sm) var(--calcite-color-border-3);
+    }
+
+    &__flex-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__flex-row {
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__label-emphasize {
+      font-weight: var(--calcite-font-weight-medium);
+    }
+
+    &__label-no-bottom-margin {
+      --calcite-label-margin-bottom: 0;
+    }
+
+    &__margin-inline-medium {
+      margin-inline: var(--calcite-spacing-md);
+    }
+
+    &__padding-medium {
+      padding: var(--calcite-spacing-md);
+    }
+
+    &__route-item {
+      display: flex;
+      flex: 1 0 auto;
+      margin: var(--calcite-spacing-md);
+      margin-block-start: var(--calcite-spacing-sm);
+      border: var(--calcite-border-width-sm) solid var(--calcite-color-border-3);
+      border-radius: var(--calcite-corner-radius-round);
+      width: auto;
+      overflow: hidden;
+    }
+
+    &__route-item-button {
+      display: flex;
+      flex: 1 0 auto;
+      align-items: center;
+      margin: 0;
+      border: none;
+      background-color: var(--calcite-color-foreground-1);
+      padding: var(--calcite-spacing-sm) var(--calcite-spacing-md);
+      padding-inline-end: var(--calcite-spacing-xs);
+      text-align: unset;
+      font-family: var(--calcite-font-family);
+    }
+
+    &__route-item-button:hover {
+      background-color: var(--calcite-color-foreground-2);
+      cursor: pointer;
+    }
+
+    &__route-item-button-content {
+      display: flex;
+      flex: 1 0 auto;
+      flex-direction: column;
+    }
+
+    &__route-item-label {
+      line-height: var(--calcite-font-line-height-relative-snug);
+      color: var(--calcite-color-text-1);
+      font-size: var(--calcite-font-size-md);
+      font-weight: var(--calcite-font-weight-medium);
+    }
+
+    &__route-item-description {
+      line-height: var(--calcite-font-line-height-relative-snug);
+      color: var(--calcite-color-text-3);
+      font-size: var(--calcite-font-size--2);
+      font-weight: var(--calcite-font-weight-regular);
+    }
+
+    &__optimize-section {
+      --calcite-block-section-header-text-color: var(--calcite-color-text-1);
+    }
+
+    &__optimize-switches {
+      margin-inline-start: var(--calcite-spacing-md);
+      cursor: pointer;
+    }
+
+    &__panel-header-action {
+      display: flex;
+      align-items: center;
+    }
+
+    &__primary-flow-item {
+      display: flex;
+      flex: 1 1 auto;
+      flex-flow: column nowrap;
+      align-items: stretch;
+      justify-content: flex-start;
+      overflow: visible;
+    }
+
+    &__primary-footer {
+      border-top: var(--calcite-border-width-sm) solid var(--calcite-color-border-3);
+      padding: var(--calcite-spacing-md);
+    }
+
+    &__primary-footer-centered {
+      display: flex;
+      flex-flow: column wrap;
+      align-items: center;
+      border-top: var(--calcite-border-width-sm) solid var(--calcite-color-border-3);
+      padding: var(--calcite-spacing-md);
+    }
+
+    &__primary-footer-loader {
+      --calcite-loader-spacing: 0;
+
+      margin-top: var(--calcite-spacing-md);
+      margin-bottom: var(--calcite-spacing-md);
+    }
+
+    &__save-error {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__save-error-icon {
+      margin-top: calc(var(--calcite-spacing-lg) * 3);
+      margin-bottom: var(--calcite-spacing-xxs);
+      color: var(--calcite-color-status-danger);
+    }
+
+    &__save-error-label {
+      margin-inline: var(--calcite-spacing-sm);
+    }
+
+    &__save-process-loader {
+      padding-top: calc(var(--calcite-spacing-lg) * 3);
+      padding-bottom: calc(var(--calcite-spacing-lg) * 2);
+    }
+
+    &__selected-feature-container {
+      margin-inline: var(--calcite-spacing-md);
+      height: 100px;
+      overflow-y: auto;
+    }
+
+    &__separator {
+      margin: var(--calcite-spacing-md) 0;
+      background-color: var(--calcite-color-border-3);
+      height: var(--calcite-border-width-sm);
+    }
+
+    &__stop-item {
+      .esri-search {
+        width: auto;
+      }
+    }
+  }
+}
+
+@if $include_Directions == true {
+  @include directions();
+}

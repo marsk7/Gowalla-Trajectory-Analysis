@@ -1,0 +1,1 @@
+{"version":3,"file":"load-modules.d.ts","sourceRoot":"","sources":["../src/load-modules.ts"],"names":[],"mappings":"AAQA,OAAO,EAAuC,kBAAkB,EAAC,MAAM,aAAa,CAAC;AAErF,KAAK,aAAa,GAAG;IACnB,SAAS,EAAE,GAAG,CAAC;IACf,YAAY,EAAE,GAAG,CAAC;IAClB,OAAO,CAAC,EAAE,OAAO,EAAE,CAAC;CACrB,CAAC;AAIF,wBAAsB,iBAAiB,CACrC,OAAO,EAAE,MAAM,EAAE,EACjB,iBAAiB,EAAE,kBAAkB,GACpC,OAAO,CAAC,aAAa,CAAC,CAUxB"}

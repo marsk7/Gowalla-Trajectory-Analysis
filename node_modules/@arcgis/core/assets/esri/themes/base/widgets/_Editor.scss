@@ -1,0 +1,371 @@
+@mixin esri-editor__prompt($contextColor) {
+  @include defaultBoxShadow();
+
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  flex-flow: column nowrap;
+  border-top: solid 3px $contextColor;
+  background-color: var(--calcite-color-background);
+  padding-block: $cap-spacing;
+  padding-inline: $side-spacing;
+  max-height: 85%;
+  animation: esri-fade-in-up 250ms ease-in-out;
+  color: $font-color;
+
+  .esri-editor__prompt {
+    &__header {
+      display: flex;
+      flex: 0 0 auto;
+      gap: $side-spacing--half;
+      align-items: center;
+      margin-bottom: $cap-spacing;
+      color: $contextColor;
+
+      &__heading {
+        margin: 0 $side-spacing--quarter;
+        color: $heading-color;
+      }
+    }
+
+    &__message {
+      flex: 1 1 auto;
+      padding: 0 0 $cap-spacing 0;
+      overflow: auto;
+      overflow-x: hidden;
+      word-break: break-word;
+      color: inherit;
+      font-weight: $font-weight;
+    }
+
+    &__divider {
+      flex: 0 0 auto;
+      margin: 0 0 $cap-spacing 0;
+      border-bottom: $border;
+      border-color: $border-color--subtle;
+      color: inherit;
+    }
+
+    &__actions {
+      display: flex;
+      flex-direction: row;
+    }
+
+    &__half-width-button {
+      width: 50%;
+    }
+  }
+}
+
+@mixin editor() {
+  $border: 1px solid $border-color;
+  $panel-background-color: var(--calcite-color-background);
+
+  $panel-min-height: 200px;
+  $panel-padding-inline: $side-spacing;
+  $panel-padding-block: $cap-spacing--plus-half;
+
+  $loader-size: 2rem; // Same as --calcite-loader-size
+
+  .esri-editor {
+    $template-item-content-end-margin: 0.75rem; // Matches default spacing used by Calcite
+
+    --calcite-z-index-header: 1;
+
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    background-color: $panel-background-color;
+    height: 100%;
+
+    &__actions {
+      display: flex;
+      row-gap: $cap-spacing--half;
+      width: 100%;
+
+      calcite-button {
+        flex-grow: 1;
+      }
+    }
+
+    &__update-actions-list {
+      margin-inline: -$panel-padding-inline; // Make the actions fill the whole panel
+    }
+
+    &__help-message {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-inline: calc(#{$panel-padding-inline} - 0.5rem); // Align with the editor content
+      width: 100%;
+    }
+
+    .esri-feature-form {
+      padding: 0;
+      width: 100%;
+
+      &__label:last-child {
+        margin-bottom: $cap-spacing;
+      }
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    // Template list
+    // ---------------------------------------------------------------------------------------------
+
+    .esri-item-list {
+      background-color: transparent;
+
+      &__scroller {
+        margin-inline: -$panel-padding-inline; // Make the list items fill the whole width
+      }
+
+      &__group {
+        margin-inline: 0 0;
+
+        &:first-of-type {
+          margin-top: 0;
+        }
+
+        &__header {
+          padding-inline: $panel-padding-inline; // Add back the padding removed in the scroller above
+        }
+      }
+
+      &__filter-container,
+      &__filter-container--sticky {
+        margin-block: -$cap-spacing $cap-spacing; // Cancel top margin from the filter
+        margin-inline: -$panel-padding-inline; // Fill the whole width
+        background-color: var(--calcite-color-background);
+        padding-block: $cap-spacing;
+        padding-inline: $panel-padding-inline; // ...but add the padding back in
+      }
+    }
+
+    &__template-item-content-end {
+      display: block;
+      margin-inline: $template-item-content-end-margin;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    // Panel toolbar / Settings
+    // ---------------------------------------------------------------------------------------------
+
+    &__panel-toolbar {
+      --divider-border: 1px solid var(--calcite-color-border-2);
+
+      display: flex;
+      flex-direction: row;
+      border-bottom: var(--divider-border);
+      background-color: var(--calcite-color-foreground-1);
+      overflow-wrap: anywhere;
+    }
+
+    &__settings {
+      border: 0;
+      width: 100%;
+
+      // When there are tooltip options and snapping options at the same time, we need to restore
+      // the border between them. Issue #55500
+      .esri-sketch-tooltip-controls:not(:only-child) calcite-block {
+        border-block-end-width: 1px;
+        border-style: solid;
+        border-color: var(--calcite-color-border-3);
+      }
+    }
+
+    &__feature-templates-container {
+      .esri-feature-templates {
+        width: 100%;
+      }
+    }
+
+    &__notice {
+      margin-bottom: $cap-spacing;
+    }
+
+    .esri-snapping-controls__layer-list {
+      max-height: 220px;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    // Panel Content
+    // ---------------------------------------------------------------------------------------------
+
+    &__panel-content {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      gap: $cap-spacing--double;
+      padding-block: $panel-padding-block;
+      padding-inline: $panel-padding-inline;
+      height: auto;
+      min-height: $panel-min-height;
+
+      &__section {
+        position: relative;
+
+        &__group {
+          display: flex;
+          flex: 1 0 100%;
+          flex-direction: column;
+        }
+      }
+
+      &__message {
+        display: flex;
+        flex-basis: 100%;
+        flex-grow: 1;
+        align-items: center;
+        justify-content: center;
+        padding-inline: $panel-padding-inline;
+        text-align: center;
+        font-size: var(--calcite-font-size-0);
+      }
+    }
+
+    &__panel-content__scrim-container {
+      overflow: hidden;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    // Pending Feature List
+    // ---------------------------------------------------------------------------------------------
+
+    &__pending-feature-list-icon {
+      display: flex;
+
+      &[icon="exclamation-mark-triangle"] {
+        color: var(--calcite-color-status-warning, #edd317);
+      }
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    // Sketch
+    // ---------------------------------------------------------------------------------------------
+
+    &__sketch-container {
+      // Default calcite-action-* border behavior is ugly in the docked toolbar in horizontal layout
+      --calcite-action-group-border-color: transparent;
+
+      position: relative;
+      flex-shrink: 0;
+      margin: var(--calcite-spacing-sm, 8px);
+      border-width: var(--calcite-border-width-sm, 1px);
+      border-style: solid;
+      border-radius: var(--calcite-corner-radius-round, 4px);
+      border-color: var(--calcite-color-border-3, #dfdfdf);
+      min-height: min-content;
+      overflow: hidden;
+    }
+
+    &__sketch-container + &__panel-content {
+      padding-block-start: 0;
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    // Upload details
+    // ---------------------------------------------------------------------------------------------
+
+    &__upload-details {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing--double;
+      min-width: 0;
+      text-align: start;
+
+      &__status {
+        display: flex;
+        flex-direction: row;
+        gap: $side-spacing;
+        align-items: flex-start;
+      }
+
+      &__title-wrapper {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__title {
+        line-height: $loader-size;
+        font-size: var(--calcite-font-size-0);
+        font-weight: var(--calcite-font-weight-medium);
+      }
+
+      &__description {
+        font-size: var(--calcite-font-size--1);
+      }
+
+      &__loader {
+        flex-shrink: 0;
+        margin-inline: 0;
+        padding-block: 0;
+        width: $loader-size;
+        height: $loader-size;
+      }
+
+      &__icon {
+        &--success {
+          color: var(--calcite-color-status-success);
+        }
+
+        &--error {
+          color: var(--calcite-color-status-danger);
+        }
+      }
+
+      &__file-list {
+        display: flex;
+        flex-direction: column;
+        gap: $cap-spacing--third;
+      }
+
+      &__file {
+        display: flex;
+        gap: $side-spacing--half;
+        align-items: center;
+        width: 100%;
+        overflow: hidden;
+        line-height: 1em;
+        white-space: break-spaces;
+        word-break: break-all;
+      }
+
+      &__file-name {
+        word-break: break-all;
+        font-size: var(--calcite-font-size--3);
+      }
+    }
+
+    // ---------------------------------------------------------------------------------------------
+    // Prompts
+    // ---------------------------------------------------------------------------------------------
+
+    &__prompt--info {
+      @include esri-editor__prompt(var(--calcite-color-status-info));
+    }
+
+    &__prompt--warning {
+      @include esri-editor__prompt(var(--calcite-color-status-warning));
+    }
+
+    &__prompt--danger {
+      @include esri-editor__prompt(var(--calcite-color-status-danger));
+    }
+  }
+
+  .esri-expand__content {
+    .esri-editor {
+      .esri-feature-form {
+        max-height: fit-content;
+        overflow-y: visible;
+      }
+    }
+  }
+}
+
+@if $include_Editor == true {
+  @include editor();
+}

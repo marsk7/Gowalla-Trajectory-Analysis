@@ -1,0 +1,15 @@
+# Installation
+> `npm install --save @types/brotli`
+
+# Summary
+This package contains type definitions for brotli (https://github.com/foliojs/brotli.js).
+
+# Details
+Files were exported from https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/brotli.
+
+### Additional Details
+ * Last updated: Mon, 06 Nov 2023 22:41:05 GMT
+ * Dependencies: [@types/node](https://npmjs.com/package/@types/node)
+
+# Credits
+These definitions were written by [Artur Androsovych](https://github.com/arturovt).

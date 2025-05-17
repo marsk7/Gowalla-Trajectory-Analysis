@@ -1,0 +1,43 @@
+$search_width: 240px !default;
+
+@mixin search() {
+  .esri-search {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    width: $search_width;
+  }
+
+  .esri-search__dropdown {
+    --calcite-color-border-1: var(--calcite-color-border-input);
+    --calcite-dropdown-width: 240px;
+
+    width: 31px; // set to 31px to remove the double border between the search input and the dropdown button
+  }
+
+  .esri-search__autocomplete {
+    flex: 1;
+  }
+
+  .esri-search__container {
+    display: flex;
+    position: relative;
+    flex: 1 0 100%;
+    flex-flow: row nowrap;
+    align-items: stretch;
+  }
+
+  .esri-search__form {
+    display: flex;
+    flex: 1 0;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@if $include_Search == true {
+  @include search();
+}

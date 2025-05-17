@@ -1,0 +1,3 @@
+declare const _default: "#version 300 es\nuniform sampler2D inTexture;\nout vec4 outTexture;\n\nvoid main()\n{\n  // Sample every pixel in texture\n  int yIndex = gl_VertexID / int(maxWeight.textureSize);\n  int xIndex = gl_VertexID - (yIndex * int(maxWeight.textureSize));\n  vec2 uv = (0.5 + vec2(float(xIndex), float(yIndex))) / maxWeight.textureSize;\n  outTexture = texture(inTexture, uv);\n\n  gl_Position = vec4(0.0, 0.0, 0.0, 1.0);\n  // Enforce default value for ANGLE issue (https://bugs.chromium.org/p/angleproject/issues/detail?id=3941)\n  gl_PointSize = 1.0;\n}\n";
+export default _default;
+//# sourceMappingURL=max-vs.glsl.d.ts.map

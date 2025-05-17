@@ -1,0 +1,27 @@
+// loaders.gl
+// SPDX-License-Identifier: MIT
+// Copyright (c) vis.gl contributors
+import { Hash } from "./hash.js";
+/**
+ * A transform that calculates Cryptographic Hash using Node's Crypto library
+ * @deprecated Only available in Node.js
+ */
+export class NodeHash extends Hash {
+    name;
+    options;
+    constructor(options) {
+        super();
+        this.options = options;
+        if (!globalThis.loaders.NodeHash) {
+            throw new Error('install @loaders.gl/crypto on Node.js to use NodeHash');
+        }
+        return new globalThis.loaders.NodeHash(options);
+    }
+    /**
+     * Atomic hash calculation
+     * @returns base64 encoded hash
+     */
+    async hash(input, encoding) {
+        throw new Error('Not implemented');
+    }
+}

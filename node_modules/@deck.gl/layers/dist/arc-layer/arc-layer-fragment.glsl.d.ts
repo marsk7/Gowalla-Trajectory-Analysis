@@ -1,0 +1,3 @@
+declare const _default: "#version 300 es\n#define SHADER_NAME arc-layer-fragment-shader\n\nprecision highp float;\n\nin vec4 vColor;\nin vec2 uv;\nin float isValid;\n\nout vec4 fragColor;\n\nvoid main(void) {\n  if (isValid == 0.0) {\n    discard;\n  }\n\n  fragColor = vColor;\n  geometry.uv = uv;\n\n  DECKGL_FILTER_COLOR(fragColor, geometry);\n}\n";
+export default _default;
+//# sourceMappingURL=arc-layer-fragment.glsl.d.ts.map

@@ -1,0 +1,27 @@
+{
+    "name": "@types/brotli",
+    "version": "1.3.4",
+    "description": "TypeScript definitions for brotli",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/brotli",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Artur Androsovych",
+            "githubUsername": "arturovt",
+            "url": "https://github.com/arturovt"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/brotli"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@types/node": "*"
+    },
+    "typesPublisherContentHash": "eeee0854d1fef99c842e3fffef87c0f396519c104e04b5a4126dd514c2045c3e",
+    "typeScriptVersion": "4.5"
+}

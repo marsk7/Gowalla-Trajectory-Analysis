@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/mapbox.ts"],
+  "sourcesContent": ["export * from '@vis.gl/react-mapbox';\n\nexport {Map as default} from '@vis.gl/react-mapbox';\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;AAAA;;;;;2BAAc,iCAAd;AAEA,0BAA6B;",
+  "names": []
+}

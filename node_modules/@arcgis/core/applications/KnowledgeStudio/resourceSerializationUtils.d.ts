@@ -1,0 +1,6 @@
+import "../../interfaces";
+
+export const fetchAndConvertSerializedKnowledgeIdMap: __esri.resourceSerializationUtils["fetchAndConvertSerializedKnowledgeIdMap"];
+export const fetchAndConvertSerializedLinkChart: __esri.resourceSerializationUtils["fetchAndConvertSerializedLinkChart"];
+export const serializeInclusionDefinitionToAllPbf: __esri.resourceSerializationUtils["serializeInclusionDefinitionToAllPbf"];
+export const serializeInclusionDefinitionToIdCollectionsMapPbf: __esri.resourceSerializationUtils["serializeInclusionDefinitionToIdCollectionsMapPbf"];

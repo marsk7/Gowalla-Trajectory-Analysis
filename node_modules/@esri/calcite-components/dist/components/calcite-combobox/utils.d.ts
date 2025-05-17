@@ -1,0 +1,10 @@
+import { ComboboxItem } from '../calcite-combobox-item/customElement.js';
+import { ComboboxChildElement } from './interfaces';
+import { Combobox } from './customElement.js';
+export declare function getAncestors(element: HTMLElement): ComboboxChildElement[];
+export declare function getItemAncestors(item: HTMLCalciteComboboxItemElement): HTMLCalciteComboboxItemElement[];
+export declare function getItemChildren(item: HTMLCalciteComboboxItemElement): HTMLCalciteComboboxItemElement[];
+export declare function hasActiveChildren(node: HTMLCalciteComboboxItemElement): boolean;
+export declare function getDepth(element: ComboboxChildElement): number;
+export declare function isSingleLike(selectionMode: Combobox["selectionMode"]): boolean;
+export declare function getLabel(item: HTMLCalciteComboboxItemElement): string;

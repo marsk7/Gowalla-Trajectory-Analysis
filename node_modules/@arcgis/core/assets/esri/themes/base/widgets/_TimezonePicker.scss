@@ -1,0 +1,25 @@
+@mixin timezonePicker() {
+  .esri-timezone-picker {
+    display: flex;
+    position: relative;
+    align-items: center;
+
+    &__item-title {
+      font-size: $font-size--small;
+      font-weight: $font-weight--bold;
+    }
+
+    &__item-description {
+      font-size: $font-size--tiny;
+    }
+
+    // Workaround for #62321
+    calcite-dropdown:not([open]) calcite-dropdown-group {
+      display: none;
+    }
+  }
+}
+
+@if $include_TimezonePicker == true {
+  @include timezonePicker();
+}

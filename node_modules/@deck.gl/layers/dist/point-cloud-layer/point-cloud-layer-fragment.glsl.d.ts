@@ -1,0 +1,3 @@
+declare const _default: "#version 300 es\n#define SHADER_NAME point-cloud-layer-fragment-shader\n\nprecision highp float;\n\nin vec4 vColor;\nin vec2 unitPosition;\n\nout vec4 fragColor;\n\nvoid main(void) {\n  geometry.uv = unitPosition.xy;\n\n  float distToCenter = length(unitPosition);\n\n  if (distToCenter > 1.0) {\n    discard;\n  }\n\n  fragColor = vColor;\n  DECKGL_FILTER_COLOR(fragColor, geometry);\n}\n";
+export default _default;
+//# sourceMappingURL=point-cloud-layer-fragment.glsl.d.ts.map

@@ -1,0 +1,271 @@
+@mixin elevationProfile() {
+  // ----------------------------------------------------------------------------
+  // Widget
+  // ----------------------------------------------------------------------------
+
+  .esri-elevation-profile {
+    --popover-padding: #{$cap-spacing} #{$side-spacing};
+    --width: 550px;
+    --chart-height: 180px;
+    --calcite-label-margin-bottom: 0;
+    --actions-spacing-h: #{$side-spacing--half};
+    --actions-spacing-v: #{$cap-spacing--half};
+
+    position: relative;
+    isolation: isolate;
+    padding: var(--esri-widget-padding);
+    container-type: inline-size;
+
+    &.esri-component.esri-widget--panel {
+      width: var(--width);
+      max-width: 100%; // Don't overflow parent container, especially on mobile
+    }
+
+    &__header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    &__footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: $cap-spacing;
+
+      calcite-button {
+        min-height: 32px;
+      }
+    }
+
+    &__action-button {
+      margin-inline-start: var(--actions-spacing-h);
+      width: auto;
+    }
+
+    &__main-container {
+      display: flex;
+      position: relative;
+      flex-flow: column;
+      width: 100%;
+      height: var(--chart-height);
+    }
+
+    &__chart-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__prompt-container {
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0;
+      padding: $cap-spacing $side-spacing;
+      height: 100%;
+      text-align: center;
+
+      > p {
+        margin: 0;
+        width: 100%;
+      }
+    }
+
+    &__chart-spinner {
+      // Position it in the middle of the container
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: opacity 150ms ease-in-out;
+      transition-delay: 0;
+      opacity: 0;
+
+      // We show a spinner with a delay so that it is only visible if a profile takes a longer
+      // time to refine.
+      &--visible {
+        transition-delay: 50ms;
+        opacity: 1;
+      }
+
+      &--small {
+        top: -22px; // Align top of the chart with icon of header buttons;
+        left: unset;
+        inset-inline-start: 0;
+        transform: none;
+        color: var(--calcite-color-brand);
+      }
+    }
+
+    // Portrait mode
+    // We have vertical space so we'll size the chart and let the widget scale vertically.
+    @container (max-width: 400px) {
+      .esri-component.esri-widget--panel {
+        height: auto;
+      }
+
+      .esri-elevation-profile__footer {
+        flex-direction: column;
+      }
+
+      .esri-elevation-profile__action-button {
+        align-self: stretch;
+        margin-inline-start: 0;
+
+        &:not(:last-of-type) {
+          margin-bottom: var(--actions-spacing-v);
+        }
+      }
+    }
+  }
+
+  // ----------------------------------------------------------------------------
+  // Settings
+  // ----------------------------------------------------------------------------
+
+  .esri-elevation-profile-settings {
+    calcite-popover[calcite-hydrated-hidden] {
+      inset-block-start: -999999px;
+      inset-inline-start: -999999px;
+    }
+
+    &__popover-content {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing;
+      padding: var(--popover-padding);
+      min-width: 180px; // Give some space for our labels to render properly
+      color: $font-color;
+      font-size: $font-size__body;
+    }
+  }
+
+  // ----------------------------------------------------------------------------
+  // Legend
+  // ----------------------------------------------------------------------------
+
+  .esri-elevation-profile-legend {
+    margin-top: $cap-spacing--half;
+  }
+
+  // ----------------------------------------------------------------------------
+  // Legend Item
+  // ----------------------------------------------------------------------------
+
+  .esri-elevation-profile-legend-item {
+    position: relative;
+    background: $background-color--offset;
+
+    &:not(:last-of-type) {
+      margin-bottom: $cap-spacing--eighth;
+    }
+
+    &--disabled {
+      filter: grayscale(1);
+      opacity: $opacity--disabled;
+    }
+
+    &__color-indicator {
+      position: absolute;
+      top: 0;
+      inset-inline-start: 0;
+      width: 3px;
+      height: 100%;
+    }
+
+    &__header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    &__content {
+      display: block;
+      padding: $cap-spacing $side-spacing;
+      padding-top: 0;
+    }
+
+    &__collapse-toggle {
+      flex-shrink: 0;
+
+      // Make sure the element has a size, to avoid popping due to Calcite Components loading async
+      width: 32px;
+      height: 32px;
+    }
+
+    &__label {
+      flex-grow: 1;
+      flex-shrink: 1;
+      padding-inline-start: $side-spacing;
+      min-width: 0; // allow the legend to shrink as much as needed.
+    }
+  }
+
+  // ----------------------------------------------------------------------------
+  // Statistics
+  // ----------------------------------------------------------------------------
+
+  .esri-elevation-profile-statistics {
+    --max-width: 1px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--max-width), 1fr));
+    gap: $cap-spacing--eighth $side-spacing--plus-half;
+    width: 100%;
+    contain: layout paint style;
+
+    &__statistic {
+      display: block;
+      width: max-content;
+      text-align: start;
+      white-space: nowrap;
+
+      &__label {
+        font-size: $font-size--tiny;
+        font-weight: $font-weight--regular;
+      }
+
+      &__value {
+        margin-top: -0.15em; // condense things slightly
+        font-size: $font-size--tiny;
+        font-weight: $font-weight--bold;
+      }
+    }
+
+    &__slope-value {
+      display: flex;
+      align-items: center;
+
+      // Ensure we have a size, because icons don't remember immediately.
+      calcite-icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  // Ensure the chart fits when the view is really small.
+  .esri-view-height-xsmall .esri-elevation-profile {
+    --chart-height: 68px;
+  }
+
+  .esri-elevation-profile--portrait {
+    .esri-elevation-profile-statistics {
+      gap: ($cap-spacing--eighth * 3) $side-spacing--plus-half;
+      margin-bottom: $cap-spacing;
+    }
+
+    .esri-elevation-profile-statistics__statistic__value {
+      margin-top: 2px;
+    }
+  }
+}
+
+@if $include_ElevationProfile == true {
+  @include elevationProfile();
+}

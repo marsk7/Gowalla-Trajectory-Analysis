@@ -1,0 +1,91 @@
+@mixin layerList() {
+  .esri-layer-list {
+    display: flex;
+  }
+
+  .esri-layer-list__filter-no-results {
+    @include layerListFilterNoResults();
+  }
+
+  .esri-layer-list__item {
+    @include layerListItem();
+  }
+
+  .esri-layer-list__item-table-icon,
+  .esri-layer-list__item-catalog-icon {
+    margin-inline-end: 0;
+  }
+
+  .esri-layer-list__item-action-image {
+    @include layerListActionImage();
+  }
+
+  .esri-layer-list__action-menu .esri-layer-list__action-group {
+    display: none;
+  }
+
+  .esri-layer-list__action-menu[open] .esri-layer-list__action-group {
+    display: flex;
+  }
+
+  .esri-layer-list__visible-icon {
+    visibility: hidden;
+  }
+
+  .esri-layer-list__item--active:hover,
+  .esri-layer-list__item--active:focus,
+  .esri-layer-list__item--active:focus-within {
+    > .esri-layer-list__visible-toggle > .esri-layer-list__visible-icon {
+      visibility: visible;
+    }
+  }
+
+  .esri-layer-list__status-indicator {
+    @include layerListStatusIndicator();
+  }
+
+  .esri-layer-list__publishing {
+    @include layerListPublishingIndicator();
+
+    transform-origin: var(--calcite-list-item-icon-center) var(--calcite-list-item-icon-center);
+    animation: esri-layer-list__publishing-anim 2s normal infinite;
+  }
+
+  .esri-layer-list__updating {
+    @include layerListUpdatingIndicator();
+
+    animation: esri-layer-list__updating-anim 2s normal infinite;
+  }
+
+  .esri-layer-list__connection-status {
+    @include layerListConnectionStatus();
+  }
+
+  .esri-layer-list__connection-status--connected {
+    color: $connection-connected;
+  }
+
+  .esri-layer-list__item-content-bottom {
+    @include layerListContentBottom();
+  }
+
+  .esri-layer-list__item-content-bottom .esri-legend__service {
+    @include layerListLegend();
+  }
+
+  .esri-layer-list__item-message {
+    @include layerListContentBottom();
+  }
+
+  @keyframes esri-layer-list__updating-anim {
+    @include layerListUpdating();
+  }
+
+  @keyframes esri-layer-list__publishing-anim {
+    @include layerListPublishing();
+  }
+}
+
+@if $include_LayerList == true {
+  @include layerList();
+}

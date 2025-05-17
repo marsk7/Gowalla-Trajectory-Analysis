@@ -1,0 +1,1 @@
+//# sourceMappingURL=mesh-to-arrow-table.d.ts.map

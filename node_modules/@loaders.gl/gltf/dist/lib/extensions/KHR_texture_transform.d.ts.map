@@ -1,0 +1,1 @@
+{"version":3,"file":"KHR_texture_transform.d.ts","sourceRoot":"","sources":["../../../src/lib/extensions/KHR_texture_transform.ts"],"names":[],"mappings":"AAAA;;GAEG;AAGH,OAAO,KAAK,EAAC,eAAe,EAAC,+BAA4B;AASzD,OAAO,KAAK,EAAC,iBAAiB,EAAC,6BAA0B;AAUzD,eAAO,MAAM,IAAI,0BAAwB,CAAC;AA+B1C;;;;GAIG;AACH,wBAAsB,MAAM,CAAC,QAAQ,EAAE,eAAe,EAAE,OAAO,EAAE,iBAAiB,iBAUjF"}

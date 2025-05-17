@@ -1,0 +1,38 @@
+import { ReferenceElement } from '../../utils/floating-ui';
+import { Tooltip } from './customElement.js';
+export default class TooltipManager {
+    private registeredElements;
+    private registeredShadowRootCounts;
+    private hoverOpenTimeout;
+    private hoverCloseTimeout;
+    private activeTooltip;
+    private registeredElementCount;
+    private clickedTooltip;
+    private hoveredTooltip;
+    registerElement(referenceEl: ReferenceElement, tooltip: HTMLCalciteTooltipElement): void;
+    unregisterElement(referenceEl: ReferenceElement): void;
+    private queryTooltip;
+    private keyDownHandler;
+    private pointerLeaveHandler;
+    private pointerMoveHandler;
+    private pathHasOpenTooltip;
+    private clickHandler;
+    private blurHandler;
+    private focusInHandler;
+    private addShadowListeners;
+    private removeShadowListeners;
+    private addListeners;
+    private removeListeners;
+    private clearHoverOpenTimeout;
+    private clearHoverCloseTimeout;
+    private clearHoverTimeout;
+    private closeTooltipIfNotActive;
+    private closeActiveTooltip;
+    private toggleFocusedTooltip;
+    private toggleTooltip;
+    private openHoveredTooltip;
+    private closeHoveredTooltip;
+    private registerShadowRoot;
+    private unregisterShadowRoot;
+    private getReferenceElShadowRootNode;
+}

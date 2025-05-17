@@ -1,0 +1,46 @@
+{
+  "name": "@math.gl/geospatial",
+  "description": "Geospatial classes",
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "4.1.0",
+  "keywords": [
+    "webgl",
+    "javascript",
+    "math",
+    "geospatial",
+    "WGS84",
+    "ellipsoid",
+    "cartographic",
+    "cartesian",
+    "projection",
+    "web mercator",
+    "geographic"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/visgl/math.gl.git"
+  },
+  "types": "dist/index.d.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "dependencies": {
+    "@math.gl/core": "4.1.0",
+    "@math.gl/types": "4.1.0"
+  },
+  "gitHead": "76820f54e2a9034b42bd24ffeb381cc4e01ad46e"
+}

@@ -1,0 +1,22 @@
+@mixin compass() {
+  .esri-compass {
+    --calcite-color-foreground-3: $background-color;
+
+    border-radius: 50%;
+
+    &__icon-container {
+      display: flex;
+      position: absolute;
+      justify-content: center;
+      transform: translate(-50%, -50%);
+
+      [dir="rtl"] & {
+        transform: translate(50%, -50%);
+      }
+    }
+  }
+}
+
+@if $include_Compass == true {
+  @include compass();
+}

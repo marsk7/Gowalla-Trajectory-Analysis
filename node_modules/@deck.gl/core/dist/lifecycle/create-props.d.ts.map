@@ -1,0 +1,1 @@
+{"version":3,"file":"create-props.d.ts","sourceRoot":"","sources":["../../src/lifecycle/create-props.ts"],"names":[],"mappings":"AAeA,OAAO,EAAC,sBAAsB,EAAC,uBAAoB;AACnD,OAAO,SAAS,uBAAoB;AAGpC,wBAAgB,WAAW,CAAC,MAAM,SAAS,EAAE,EAC3C,SAAS,EAAE,SAAS,CAAC,MAAM,CAAC,EAC5B,WAAW,EAAE,OAAO,CAAC,MAAM,CAAC,EAAE,GAC7B,sBAAsB,CAAC,MAAM,CAAC,CAuChC"}

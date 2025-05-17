@@ -1,0 +1,1 @@
+{"version":3,"file":"get-rotation.js","sourceRoot":"","sources":["../../../src/hammerjs/input/get-rotation.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,aAAa,EAAC,uBAAoB;AAG1C;;;GAGG;AACH,MAAM,UAAU,WAAW,CAAC,KAAyB,EAAE,GAAuB;IAC5E,OAAO,aAAa,CAAC,GAAG,CAAC,CAAC,CAAC,EAAE,GAAG,CAAC,CAAC,CAAC,CAAC,GAAG,aAAa,CAAC,KAAK,CAAC,CAAC,CAAC,EAAE,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3E,CAAC"}

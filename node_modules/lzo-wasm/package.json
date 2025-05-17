@@ -1,0 +1,22 @@
+{
+  "name": "lzo-wasm",
+  "version": "0.0.4",
+  "description": "LZO decompression in the browser using FFmpeg",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tidepool-org/lzo-wasm.git"
+  },
+  "keywords": [
+    "lzo"
+  ],
+  "author": "Gerrit Niezen <gerrit@tidepool.org>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/tidepool-org/lzo-wasm/issues"
+  },
+  "homepage": "https://github.com/tidepool-org/lzo-wasm#readme"
+}

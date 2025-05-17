@@ -1,0 +1,1 @@
+{"version":3,"file":"read-array-buffer.d.ts","sourceRoot":"","sources":["../../../src/lib/fetch/read-array-buffer.ts"],"names":[],"mappings":"AAIA;;;;;;GAMG;AACH,wBAAsB,eAAe,CACnC,IAAI,EAAE,IAAI,GAAG,WAAW,GAAG,MAAM,EACjC,KAAK,EAAE,MAAM,EACb,MAAM,EAAE,MAAM,GACb,OAAO,CAAC,WAAW,CAAC,CAOtB;AAED;;;;;;GAMG;AACH,wBAAsB,QAAQ,CAAC,IAAI,EAAE,IAAI,GAAG,OAAO,CAAC,WAAW,CAAC,CAS/D"}

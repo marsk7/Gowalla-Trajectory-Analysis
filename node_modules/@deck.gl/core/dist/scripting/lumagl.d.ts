@@ -1,0 +1,4 @@
+export declare const stats: import("@luma.gl/core").StatsManager, registerDevices: (deviceClasses: any[]) => void, getSupportedAdapters: (adapters?: import("@luma.gl/core").Adapter[]) => string[], getBestAvailableAdapter: (adapters?: import("@luma.gl/core").Adapter[]) => "webgpu" | "webgl" | null, setDefaultDeviceProps: (props: import("@luma.gl/core").CreateDeviceProps) => void, attachDevice: (props: import("@luma.gl/core").AttachDeviceProps) => Promise<import("@luma.gl/core").Device>, createDevice: (props?: import("@luma.gl/core").CreateDeviceProps) => Promise<import("@luma.gl/core").Device>, enforceWebGL2: (enforce?: boolean, adapters?: import("@luma.gl/core").Adapter[]) => void;
+export { Device, Buffer, Texture, Framebuffer } from '@luma.gl/core';
+export { Model, BufferTransform, TextureTransform, Geometry, CubeGeometry, SphereGeometry, ScenegraphNode, GroupNode, ModelNode } from '@luma.gl/engine';
+//# sourceMappingURL=lumagl.d.ts.map

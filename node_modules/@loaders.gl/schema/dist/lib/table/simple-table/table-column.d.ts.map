@@ -1,0 +1,1 @@
+{"version":3,"file":"table-column.d.ts","sourceRoot":"","sources":["../../../../src/lib/table/simple-table/table-column.ts"],"names":[],"mappings":"AAKA,OAAO,EAAC,KAAK,EAAC,iCAA8B;AAG5C,MAAM,WAAW,SAAS,CAAC,CAAC,GAAG,OAAO;IACpC,QAAQ,CAAC,MAAM,EAAE,MAAM,CAAC;IACxB,CAAC,CAAC,EAAE,MAAM,GAAG,CAAC,CAAC;CAChB;AAED,wBAAgB,mBAAmB,CAAC,KAAK,EAAE,KAAK,EAAE,MAAM,EAAE,MAAM,GAAG,SAAS,CAG3E"}

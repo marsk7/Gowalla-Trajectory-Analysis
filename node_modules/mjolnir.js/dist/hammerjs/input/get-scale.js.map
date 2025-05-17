@@ -1,0 +1,1 @@
+{"version":3,"file":"get-scale.js","sourceRoot":"","sources":["../../../src/hammerjs/input/get-scale.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,gBAAgB,EAAC,0BAAuB;AAGhD;;;GAGG;AACH,MAAM,UAAU,QAAQ,CAAC,KAAyB,EAAE,GAAuB;IACzE,OAAO,gBAAgB,CAAC,GAAG,CAAC,CAAC,CAAC,EAAE,GAAG,CAAC,CAAC,CAAC,CAAC,GAAG,gBAAgB,CAAC,KAAK,CAAC,CAAC,CAAC,EAAE,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC;AACjF,CAAC"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"tilejson-loader.d.ts","sourceRoot":"","sources":["../src/tilejson-loader.ts"],"names":[],"mappings":"AAIA,OAAO,KAAK,EAAmB,aAAa,EAAC,MAAM,0BAA0B,CAAC;AAQ9E,MAAM,MAAM,qBAAqB,GAAG,aAAa,GAAG;IAClD,qCAAqC;IACrC,QAAQ,CAAC,EAAE;QACT,kCAAkC;QAClC,SAAS,CAAC,EAAE,MAAM,CAAC;KACpB,CAAC;CACH,CAAC;AAEF;;GAEG;AACH,eAAO,MAAM,cAAc,KA4BkD,CAAC"}

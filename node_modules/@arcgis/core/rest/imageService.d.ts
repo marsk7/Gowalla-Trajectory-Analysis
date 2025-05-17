@@ -1,0 +1,21 @@
+import "../interfaces";
+
+export const computeAngles: __esri.imageService["computeAngles"];
+export const computeHistograms: __esri.imageService["computeHistograms"];
+export const computePixelSpaceLocations: __esri.imageService["computePixelSpaceLocations"];
+export const computeStatisticsHistograms: __esri.imageService["computeStatisticsHistograms"];
+export const findImages: __esri.imageService["findImages"];
+export const getImageUrl: __esri.imageService["getImageUrl"];
+export const getSamples: __esri.imageService["getSamples"];
+export const identify: __esri.imageService["identify"];
+export const imageToMap: __esri.imageService["imageToMap"];
+export const imageToMapMultiray: __esri.imageService["imageToMapMultiray"];
+export const mapToImage: __esri.imageService["mapToImage"];
+export const measureAreaAndPerimeter: __esri.imageService["measureAreaAndPerimeter"];
+export const measureAreaFromImage: __esri.imageService["measureAreaFromImage"];
+export const measureDistanceAndAngle: __esri.imageService["measureDistanceAndAngle"];
+export const measureHeight: __esri.imageService["measureHeight"];
+export const measureLengthFromImage: __esri.imageService["measureLengthFromImage"];
+export const measurePointOrCentroid: __esri.imageService["measurePointOrCentroid"];
+export const queryBoundary: __esri.imageService["queryBoundary"];
+export const queryGPSInfo: __esri.imageService["queryGPSInfo"];

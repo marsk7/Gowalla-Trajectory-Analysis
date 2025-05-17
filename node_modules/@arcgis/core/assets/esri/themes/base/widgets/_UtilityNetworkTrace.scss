@@ -1,0 +1,118 @@
+@mixin UtilityNetworkTrace {
+  .esri-utility-network-trace {
+    flex: 1 1 auto;
+
+    calcite-icon {
+      box-sizing: initial;
+    }
+
+    calcite-tab {
+      background-color: $background-color--offset;
+      padding-top: 0;
+      padding-bottom: 0;
+
+      &:not([selected]) {
+        flex: 0;
+      }
+    }
+
+    calcite-block {
+      margin-bottom: 0;
+    }
+
+    &.esri-component.esri-widget--panel {
+      min-height: $panel-min-height--medium;
+    }
+
+    &__add-button-container {
+      display: grid;
+      justify-content: center;
+      margin: $cap-spacing--plus-half 0 $cap-spacing;
+    }
+
+    &__block {
+      &-container {
+        height: 95%;
+      }
+
+      &-content {
+        margin: 0;
+        border: {
+          bottom: none;
+        }
+      }
+    }
+
+    &__divider {
+      flex: 0 0 auto;
+      margin: 0 0 $cap-spacing 0;
+      border-bottom: $border;
+      border-color: $border-color--subtle;
+      color: inherit;
+    }
+
+    &__double-pad-top {
+      padding-top: 10px;
+    }
+
+    &__feature-content {
+      height: 300px;
+    }
+
+    &__flow {
+      height: 100%;
+    }
+
+    &__list-container {
+      background-color: $background-color;
+      padding: $cap-spacing--quarter $side-spacing--quarter;
+    }
+
+    &__notice-container {
+      padding: $cap-spacing--half;
+    }
+
+    &__number-input {
+      width: 150px;
+    }
+
+    &__pad-bottom {
+      padding-bottom: 5px;
+    }
+
+    &__pad-top {
+      padding-top: 5px;
+    }
+
+    &__reset-prompt {
+      @include defaultBoxShadow();
+
+      display: flex;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      flex-flow: column nowrap;
+      border-top: solid 3px $border-color--subtle;
+      background-color: var(--calcite-color-background);
+      padding: $cap-spacing $side-spacing;
+      max-height: 85%;
+      animation: esri-fade-in-up 100ms ease-in-out;
+      color: $font-color;
+    }
+
+    &__results-container {
+      height: 100%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .esri-utility-network-trace__reset-prompt {
+    animation: none;
+  }
+}
+
+@if $include_UtilityNetworkTrace == true {
+  @include UtilityNetworkTrace();
+}

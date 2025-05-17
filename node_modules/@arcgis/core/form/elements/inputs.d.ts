@@ -1,0 +1,23 @@
+import "../../interfaces";
+
+export type Input = __esri.inputs.Input;
+export type BarcodeScannerInput = __esri.inputs.BarcodeScannerInput;
+export const BarcodeScannerInput: typeof __esri.inputs.BarcodeScannerInput;
+export type ComboBoxInput = __esri.inputs.ComboBoxInput;
+export const ComboBoxInput: typeof __esri.inputs.ComboBoxInput;
+export type DatePickerInput = __esri.inputs.DatePickerInput;
+export const DatePickerInput: typeof __esri.inputs.DatePickerInput;
+export type DateTimeOffsetPickerInput = __esri.inputs.DateTimeOffsetPickerInput;
+export const DateTimeOffsetPickerInput: typeof __esri.inputs.DateTimeOffsetPickerInput;
+export type DateTimePickerInput = __esri.inputs.DateTimePickerInput;
+export const DateTimePickerInput: typeof __esri.inputs.DateTimePickerInput;
+export type RadioButtonsInput = __esri.inputs.RadioButtonsInput;
+export const RadioButtonsInput: typeof __esri.inputs.RadioButtonsInput;
+export type SwitchInput = __esri.inputs.SwitchInput;
+export const SwitchInput: typeof __esri.inputs.SwitchInput;
+export type TextAreaInput = __esri.inputs.TextAreaInput;
+export const TextAreaInput: typeof __esri.inputs.TextAreaInput;
+export type TextBoxInput = __esri.inputs.TextBoxInput;
+export const TextBoxInput: typeof __esri.inputs.TextBoxInput;
+export type TimePickerInput = __esri.inputs.TimePickerInput;
+export const TimePickerInput: typeof __esri.inputs.TimePickerInput;

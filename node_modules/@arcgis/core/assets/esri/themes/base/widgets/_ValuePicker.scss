@@ -1,0 +1,276 @@
+@mixin valuePicker() {
+  $widget-size: $panel-width--plus-half;
+  $minor-tick-size: 3px;
+  $major-tick-size: 6px;
+
+  .esri-value-picker {
+    @include defaultBoxShadow();
+
+    .esri-slider {
+      flex: auto;
+      background: transparent;
+
+      &__tick-label {
+        white-space: nowrap;
+        font-size: var(--calcite-font-size--3);
+      }
+
+      &__ticks {
+        margin: 0;
+      }
+
+      &__tick,
+      &__track {
+        background: var(--calcite-color-border-input);
+      }
+
+      &__tick {
+        &.esri-value-picker__slider__tick-steps {
+          width: 3px;
+          height: 3px;
+        }
+      }
+
+      &__anchor:focus-visible {
+        outline: none;
+      }
+    }
+
+    &__action-bar {
+      background-color: var(--calcite-color-foreground-1);
+    }
+
+    &__caption,
+    &__label {
+      &-border {
+        display: flex;
+        align-items: center;
+        border: solid 1px var(--calcite-color-border-3);
+      }
+
+      &-text {
+        overflow: hidden;
+        white-space: nowrap;
+        font-family: inherit;
+        font-weight: var(--calcite-font-weight-medium);
+      }
+    }
+
+    &__label-text {
+      color: var(--calcite-color-text-1);
+    }
+
+    &__slider {
+      display: flex;
+      flex: auto;
+    }
+
+    &__layout {
+      &--horizontal {
+        &.esri-value-picker__type {
+          &--collection,
+          &--undefined {
+            width: fit-content;
+
+            .esri-value-picker {
+              &__action-bar {
+                width: 100%;
+              }
+
+              &__caption {
+                padding-inline-end: 0.5rem;
+              }
+            }
+          }
+
+          &--combobox,
+          &--label,
+          &--slider {
+            min-width: $widget-size;
+
+            .esri-value-picker__action-bar {
+              width: 100%;
+            }
+          }
+        }
+
+        .esri-value-picker {
+          &__caption {
+            display: flex;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            padding-inline-start: 0.5rem;
+
+            &-border {
+              padding-inline: 0.5rem;
+            }
+
+            &-text {
+              max-width: 100px;
+              text-overflow: ellipsis;
+              font-size: var(--calcite-font-size--1);
+            }
+          }
+
+          &__combobox {
+            --calcite-color-border-input: var(--calcite-color-border-3);
+
+            display: flex;
+            flex: auto;
+            align-items: center;
+            padding-inline: 10px;
+
+            calcite-combobox {
+              flex: auto;
+              width: 0;
+            }
+          }
+
+          &__label {
+            display: flex;
+            flex: auto;
+            padding: 0.5rem;
+
+            &-border {
+              flex: auto;
+              padding-inline: 0.5rem;
+            }
+
+            &-text {
+              flex: auto;
+              width: 0;
+              text-overflow: ellipsis;
+              font-size: var(--calcite-font-size--1);
+              font-weight: var(--calcite-font-weight-normal);
+            }
+          }
+
+          &__separator {
+            margin-inline-start: 0.25rem;
+            border-right: solid 1px var(--calcite-color-border-3);
+            width: 1px;
+          }
+
+          &__slider {
+            padding-inline: 30px;
+
+            &__tick {
+              &-minor {
+                height: $minor-tick-size;
+              }
+
+              &-major {
+                height: $major-tick-size;
+              }
+
+              &-steps {
+                margin-top: -6px;
+                margin-left: -1px;
+              }
+            }
+          }
+        }
+
+        .esri-slider {
+          margin-top: -10px;
+
+          &__track {
+            height: 1px;
+          }
+        }
+      }
+
+      &--vertical {
+        &.esri-value-picker__type {
+          &--collection,
+          &--undefined {
+            height: fit-content;
+
+            .esri-value-picker__action-bar {
+              height: 100%;
+            }
+          }
+
+          &--slider {
+            min-height: $widget-size;
+
+            .esri-value-picker__action-bar {
+              height: 100%;
+              min-height: $widget-size;
+            }
+          }
+        }
+
+        .esri-value-picker {
+          &__caption {
+            padding: 0.25rem;
+            width: 48px;
+
+            &-border {
+              justify-content: center;
+            }
+
+            &-text {
+              padding-block: 0.25rem;
+              text-overflow: clip;
+              font-size: var(--calcite-font-size--2);
+            }
+          }
+
+          &__separator {
+            margin-top: 0.25rem;
+            border-bottom: solid 1px var(--calcite-color-border-3);
+            height: 1px;
+          }
+
+          &__slider {
+            flex-direction: column;
+            padding: 15px 0;
+
+            &__tick {
+              &-minor {
+                width: $minor-tick-size;
+              }
+
+              &-major {
+                width: $major-tick-size;
+              }
+
+              &-steps {
+                margin-top: -1px;
+                margin-left: -6px;
+              }
+            }
+          }
+        }
+
+        .esri-slider {
+          margin-left: -13px;
+
+          &__tick-label {
+            margin-left: 20px;
+          }
+
+          &__track {
+            width: 1px;
+          }
+        }
+      }
+    }
+  }
+
+  [dir="rtl"] .esri-value-picker {
+    direction: ltr;
+
+    .esri-value-picker {
+      &__combobox,
+      &__slider__tooltip {
+        direction: rtl;
+      }
+    }
+  }
+}
+
+@if $include_ValuePicker == true {
+  @include valuePicker();
+}

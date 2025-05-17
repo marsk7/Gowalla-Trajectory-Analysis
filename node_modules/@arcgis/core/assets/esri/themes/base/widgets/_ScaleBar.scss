@@ -1,0 +1,174 @@
+@use "sass:math";
+
+@mixin scaleBar() {
+  $dark_color: $font-color;
+  $light_color: $background-color;
+
+  $block_width: 25%;
+  $block_height: 50%;
+
+  $line_thickness: 2px;
+  $tic_height: 1.5em;
+
+  $offset_for_unit_label: 2ch;
+
+  $text-shadow-size: 1px;
+
+  $border_style: $line_thickness solid $dark_color;
+
+  .esri-component.esri-scale-bar.esri-widget,
+  .esri-scale-bar.esri-widget {
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .esri-scale-bar__bar-container {
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    transition: width 250ms ease-in-out;
+    font-size: $font-size--small;
+  }
+
+  .esri-scale-bar__bar-container--ruler {
+    flex-direction: column;
+  }
+
+  .esri-scale-bar__bar-container--line:last-child {
+    align-items: flex-start;
+  }
+
+  .esri-scale-bar__ruler {
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow:
+      0 0 0 1px rgb(255 255 255 / 33%),
+      0 1px 2px rgb(0 0 0 / 30%);
+    background-color: $light_color;
+    height: 6px;
+  }
+
+  .esri-scale-bar__ruler-block {
+    background-color: $dark_color;
+    width: $block_width;
+    height: $block_height;
+  }
+
+  // top row
+  .esri-scale-bar__ruler-block:nth-child(-n + 2) {
+    margin-right: 25%;
+  }
+
+  // bottom row
+  .esri-scale-bar__ruler-block:nth-child(n + 3) {
+    margin-left: 25%;
+  }
+
+  .esri-scale-bar__line {
+    position: relative;
+    left: 0;
+    z-index: 1;
+    background-color: rgba($background-color, 0.33);
+    height: $tic_height;
+  }
+
+  .esri-scale-bar__line--top {
+    bottom: -1px;
+    border-bottom: $border_style;
+  }
+
+  .esri-scale-bar__line--bottom {
+    top: math.floor($line_thickness * 0.5) * -1;
+    border-top: $border_style;
+  }
+
+  // tics
+  .esri-scale-bar__line--top::before,
+  .esri-scale-bar__line--top::after,
+  .esri-scale-bar__line--bottom::before,
+  .esri-scale-bar__line--bottom::after {
+    display: block;
+    position: absolute;
+    border-right: $border_style;
+    background-color: $dark_color;
+    width: $line_thickness;
+    height: $tic_height;
+    content: "";
+  }
+
+  .esri-scale-bar__line--top::before {
+    bottom: -$line_thickness;
+    left: 0;
+  }
+
+  .esri-scale-bar__line--top::after {
+    right: 0;
+    bottom: -$line_thickness;
+  }
+
+  .esri-scale-bar__line--bottom::before {
+    top: -$line_thickness;
+    left: 0;
+  }
+
+  .esri-scale-bar__line--bottom::after {
+    top: -$line_thickness;
+    right: 0;
+    height: $tic_height;
+  }
+
+  .esri-scale-bar__label-container--line {
+    position: absolute;
+    left: 0;
+    z-index: 1;
+  }
+
+  .esri-scale-bar__label-container--ruler {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+
+    .esri-scale-bar__label {
+      padding: $cap-spacing--half 0 0;
+      text-shadow:
+        $text-shadow-size 0 0 $light_color,
+        0 $text-shadow-size 0 $light_color,
+        $text-shadow-size $text-shadow-size 0 $light_color,
+        ($text-shadow-size * -1) 0 0 $light_color,
+        0 ($text-shadow-size * -1) 0 $light_color,
+        ($text-shadow-size * -1) ($text-shadow-size * -1) 0 $light_color;
+    }
+  }
+
+  .esri-scale-bar__label-container--top {
+    bottom: 0;
+  }
+
+  .esri-scale-bar__label-container--bottom {
+    top: math.floor($line_thickness * 0.5);
+  }
+
+  .esri-scale-bar__label {
+    padding: 0 $side-spacing--half;
+    white-space: nowrap;
+    color: $dark_color;
+    font-size: inherit;
+    font-weight: $font-weight--bold;
+  }
+
+  [dir="rtl"] {
+    .esri-scale-bar__ruler {
+      margin: 0 ($offset_for_unit_label * 0.25) 0 $offset_for_unit_label;
+    }
+
+    .esri-scale-bar__label-container--line {
+      right: 0;
+      left: auto;
+    }
+  }
+}
+
+@if $include_ScaleBar == true {
+  @include scaleBar();
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"vector-tile.d.ts","sourceRoot":"","sources":["../../../src/lib/vector-tile/vector-tile.ts"],"names":[],"mappings":"AAMA,OAAO,EAAC,eAAe,EAAC,+BAA4B;AACpD,OAAO,QAAQ,MAAM,KAAK,CAAC;AAE3B,qBAAa,UAAU;IACrB,MAAM,EAAE;QAAC,CAAC,CAAC,EAAE,MAAM,GAAG,eAAe,CAAA;KAAC,CAAC;gBAC3B,GAAG,EAAE,QAAQ,EAAE,GAAG,CAAC,EAAE,MAAM;CAGxC"}

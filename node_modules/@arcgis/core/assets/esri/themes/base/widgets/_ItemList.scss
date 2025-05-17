@@ -1,0 +1,88 @@
+@mixin itemList() {
+  $border: 1px solid $border-color;
+  $list-item-thumbnail-preview-height: calc($list-item-height - 10px);
+
+  .esri-item-list {
+    width: 100%;
+  }
+
+  .esri-item-list__filter-container--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .esri-item-list__group {
+    margin-top: $cap-spacing;
+  }
+
+  .esri-item-list__scroller {
+    overflow-y: auto;
+  }
+
+  .esri-ui .esri-item-list__scroller {
+    position: relative;
+    z-index: 0;
+
+    &--enabled {
+      max-height: $panel-max-height--small;
+    }
+  }
+
+  .esri-item-list__group__header {
+    color: var(--calcite-color-text-2);
+    font-weight: var(--calcite-font-weight-medium);
+  }
+
+  .esri-item-list__list-item {
+    cursor: pointer;
+    min-height: $list-item-height;
+
+    /* stylelint-disable-next-line order/order */
+    @include icomoonIconSelector("&") {
+      padding-inline-end: $font-size * 0.2;
+    }
+
+    &--disabled {
+      cursor: default;
+    }
+  }
+
+  .esri-item-list__list-item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $list-item-height; // consistent width ensures labels line up even with variable icon sizes
+    height: $list-item-height;
+
+    // CIM generator produces a span, and Esri's widget styling was setting a line height,
+    // causing image to be offset incorrectly.
+    span {
+      line-height: 0;
+    }
+  }
+
+  // In the case of shared templates,
+  // we get a massive 64x64 png icon. Point symbols take about 8px in the center.
+  // Lines and polygons fill the whole width. Solution is to show the thumbnail
+  // as the background of a precisely sized div.
+  // This actually works pretty well for now and the ~40px of dead space for points
+  // is hidden, and the cropped lines and polygons look basically unchanged from
+  // full-size version.
+  .esri-thumbnail-preview {
+    background-position: center;
+    width: $list-item-thumbnail-preview-height;
+    height: $list-item-thumbnail-preview-height;
+  }
+
+  .esri-item-list__no-matches-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $panel-min-height--small;
+  }
+}
+
+@if $include_ItemList == true {
+  @include itemList();
+}

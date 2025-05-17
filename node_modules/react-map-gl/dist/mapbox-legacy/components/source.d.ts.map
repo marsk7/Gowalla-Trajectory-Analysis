@@ -1,0 +1,1 @@
+{"version":3,"file":"source.d.ts","sourceRoot":"","sources":["../../../src/mapbox-legacy/components/source.ts"],"names":[],"mappings":"AAWA,OAAO,KAAK,EACV,mBAAmB,EAGpB,+BAA4B;AAG7B,MAAM,MAAM,WAAW,GAAG,mBAAmB,GAAG;IAC9C,EAAE,CAAC,EAAE,MAAM,CAAC;IACZ,QAAQ,CAAC,EAAE,GAAG,CAAC;CAChB,CAAC;AA0DF,wBAAgB,MAAM,CAAC,KAAK,EAAE,WAAW,OA0DxC"}

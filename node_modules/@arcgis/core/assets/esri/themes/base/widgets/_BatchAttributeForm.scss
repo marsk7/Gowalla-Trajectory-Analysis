@@ -1,0 +1,135 @@
+@mixin batchAttributeForm() {
+  .esri-batch-attribute-form {
+    background-color: var(--calcite-color-background);
+    padding: var(--esri-widget-padding);
+
+    &__notice-error {
+      margin: 0 0 var(--calcite-spacing-xxl);
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__centered-button {
+      align-self: center;
+    }
+
+    &__description-text {
+      color: $interactive-font-color;
+    }
+
+    &__label {
+      @include wordbreak();
+
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      justify-content: space-between;
+      transition:
+        opacity 250ms,
+        margin 250ms;
+      opacity: 1;
+      margin-bottom: $cap-spacing--half;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &-text-content {
+        @include wordbreak();
+
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    &__input--switch {
+      margin: $side-spacing--half 0;
+    }
+
+    &__input--radio-label {
+      display: flex;
+      align-items: center;
+    }
+
+    &__input--radio-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__input--radio-placeholder {
+      color: var(--calcite-color-text-3);
+      font-style: italic;
+    }
+
+    &__form-header {
+      margin-bottom: $cap-spacing;
+
+      .esri-batch-attribute-form__description-text ~ .esri-widget__heading {
+        margin-bottom: 0;
+      }
+    }
+
+    &__input {
+      width: 100%;
+
+      &:focus {
+        outline: var(--calcite-spacing-base) solid var(--calcite-color-brand);
+        outline-offset: -2px;
+      }
+    }
+
+    &__input--disabled {
+      background-color: var(--calcite-color-background);
+      font-weight: var(--calcite-font-weight-medium);
+    }
+
+    &__individual-element {
+      margin: var(--calcite-spacing-xxl) 0;
+    }
+
+    &__date-input-container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--calcite-spacing-sm);
+
+      .esri-batch-attribute-form__input {
+        margin-bottom: $cap-spacing--quarter;
+      }
+
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &__group {
+      margin: 0 0 $cap-spacing 0;
+      margin-inline: calc(var(--calcite-spacing-md) * -1); // offset to align form elements
+      background-color: inherit;
+    }
+
+    &__group--sequential {
+      border-bottom: none;
+      border-inline-start: 3px solid $border-color;
+    }
+
+    &__block {
+      margin-inline: -10px;
+    }
+  }
+
+  [dir="rtl"] {
+    .esri-batch-attribute-form__date-input-part {
+      &:first-child .esri-batch-attribute-form__input {
+        border-right: var(--calcite-spacing-px) solid $border-color;
+        border-left: none;
+      }
+    }
+  }
+}
+
+@if $include_BatchAttributeForm == true {
+  @include batchAttributeForm();
+}

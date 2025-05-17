@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/maplibre.ts"],
+  "sourcesContent": ["export * from '@vis.gl/react-maplibre';\n\nexport {Map as default} from '@vis.gl/react-maplibre';\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;AAAA;;;;;6BAAc,mCAAd;AAEA,4BAA6B;",
+  "names": []
+}

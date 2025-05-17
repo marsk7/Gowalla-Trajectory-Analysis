@@ -1,0 +1,13 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dataset
+Gowalla_cleanCheckins.csv
+Gowalla_edges.txt
+loc-gowalla_edges.txt
+loc-gowalla_totalCheckins.txt
+ne_110m_admin_0_countries
+
+# unrelevant
+pre_process.py
+s47855812_Shikang_Ma.zip
+s47855812_Shikang_Ma

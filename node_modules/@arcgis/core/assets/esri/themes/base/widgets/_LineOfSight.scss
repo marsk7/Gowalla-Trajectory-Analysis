@@ -1,0 +1,44 @@
+@mixin lineOfSight() {
+  .esri-line-of-sight {
+    &__container {
+      display: flex;
+      position: relative;
+      flex-flow: column;
+      gap: $cap-spacing;
+      padding: var(--esri-widget-padding);
+      overflow-y: auto;
+    }
+
+    &__error {
+      color: $font-color--error;
+    }
+
+    &__hint {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing;
+    }
+
+    &__error,
+    &__hint {
+      overflow: hidden;
+      animation: esri-fade-in 250ms ease-in-out;
+
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      flex-flow: column;
+      gap: $cap-spacing--half;
+      justify-content: center;
+    }
+  }
+}
+
+@if $include_LineOfSight == true {
+  @include lineOfSight();
+}

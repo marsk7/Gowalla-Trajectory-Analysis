@@ -1,0 +1,172 @@
+@mixin shadowCast() {
+  $width: 200;
+  $slider-thumb-size: 8px;
+  $tooltip-arrow-size: 8px;
+
+  .esri-shadow-cast {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: $cap-spacing;
+    padding: var(--esri-widget-padding);
+    width: $width;
+    overflow: hidden;
+
+    &__time-range {
+      display: flex;
+      flex-direction: column;
+      font-size: $font-size--tiny-time-slider;
+
+      /* stylelint-disable-next-line order/order */
+      @include timeSlider();
+
+      .esri-slider__segment-1 {
+        background: $border-color--active;
+      }
+
+      .esri-slider.esri-slider--horizontal {
+        padding-top: $slider-thumb-size;
+        padding-bottom: 42px;
+      }
+
+      &__indicator {
+        display: flex;
+        gap: $side-spacing--eighth;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: $cap-spacing--half;
+      }
+    }
+
+    &__date-picker-container:not(:first-of-type) {
+      margin-top: $cap-spacing;
+    }
+
+    &__date-picker {
+      display: block;
+      flex-grow: 1;
+    }
+
+    &__visualization {
+      display: flex;
+      flex-direction: column;
+      margin-top: $cap-spacing;
+
+      &__select {
+        margin-bottom: $cap-spacing;
+      }
+
+      &__config--hidden {
+        display: none;
+      }
+    }
+
+    &__threshold-config,
+    &__duration-config,
+    &__discrete-config {
+      display: flex;
+      flex-direction: column;
+      gap: $cap-spacing;
+
+      calcite-label {
+        display: block;
+
+        // Don't make the labels full width so that one can't click in white space to focus elements.
+        width: max-content;
+        max-width: 100%;
+
+        // Labels shouldn't really be focusable, but we had to make the color
+        // picker label focusable with tabindex=-1 (not tabbable). Without it,
+        // Safari does not include the label in FocusEvent.relatedTarget which
+        // we use to determine whether the color picker popover should be closed
+        // right away or not.
+        &:focus,
+        &:focus-visible {
+          outline: none;
+        }
+      }
+    }
+
+    &__threshold-config {
+      .esri-slider {
+        // Ensure the timezone popover stays on top of the date picker (which has a z-index=1)
+        // See #60677, #61515
+        z-index: 2;
+
+        // Fit slider content since default API slider doesn't do it for us.
+        padding-top: $slider-thumb-size;
+        padding-bottom: 25px;
+        padding-inline: $slider-thumb-size;
+
+        .esri-slider__label,
+        .esri-slider__tick-label {
+          font-size: $font-size--tiny;
+        }
+
+        // Move labels and ticks up to make slider more compact.
+        .esri-slider__tick-label {
+          margin-top: 12px;
+        }
+
+        .esri-slider__tick {
+          top: -4px;
+        }
+
+        // Mark slider area above the threshold
+        .esri-slider__segment-1 {
+          background: $border-color--active;
+        }
+      }
+    }
+
+    &__duration-config {
+      &__radio-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        calcite-button {
+          height: 35px; // Match height of `<calcite-select>`
+        }
+      }
+    }
+
+    &__tooltip {
+      color: $font-color;
+      font-size: $font-size--small;
+
+      &__content {
+        position: absolute;
+
+        // center horizontally and place it above the mouse pointer
+        transform: translate(-50%, -100%);
+        margin-top: -$tooltip-arrow-size - $cap-spacing--third;
+        background: $background-color;
+        padding: $cap-spacing--half $side-spacing--half;
+        width: max-content;
+
+        // Tooltip arrow
+        &::after {
+          display: block;
+          position: absolute;
+
+          // Place arrow below the tooltip
+          bottom: 1px; // make the arrow overlap so the "seam" isn't noticeable
+          left: 50%;
+          transform: translate(-50%, 100%);
+          border-top: $tooltip-arrow-size solid $background-color;
+          border-right: $tooltip-arrow-size solid transparent;
+          border-bottom: $tooltip-arrow-size solid transparent;
+          border-left: $tooltip-arrow-size solid transparent;
+          width: 0;
+          height: 0;
+          content: "";
+        }
+      }
+    }
+  }
+}
+
+@if $include_ShadowCast == true {
+  @include shadowCast();
+}

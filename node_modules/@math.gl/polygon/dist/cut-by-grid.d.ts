@@ -1,0 +1,24 @@
+import type { NumericArray } from '@math.gl/core';
+export type Polygon = {
+    positions: Readonly<NumericArray>;
+    holeIndices?: Readonly<NumericArray>;
+    edgeTypes?: Readonly<NumericArray>;
+};
+export declare function cutPolylineByGrid(positions: NumericArray, options?: {
+    size?: number;
+    broken?: boolean;
+    gridResolution?: number;
+    gridOffset?: [number, number];
+    startIndex?: number;
+    endIndex?: number;
+}): number[] | number[][];
+/**
+ * Cuts a polygon by a pre-defined grid
+ */
+export declare function cutPolygonByGrid(positions: Readonly<NumericArray>, holeIndices?: Readonly<NumericArray> | null, options?: {
+    size?: number;
+    gridResolution?: number;
+    gridOffset?: [number, number];
+    edgeTypes?: boolean;
+}): Polygon[];
+//# sourceMappingURL=cut-by-grid.d.ts.map

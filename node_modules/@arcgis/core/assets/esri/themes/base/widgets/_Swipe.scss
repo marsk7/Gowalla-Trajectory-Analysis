@@ -1,0 +1,117 @@
+@mixin swipe() {
+  $divider-color: $background-color !default;
+  $divider-size: 4px !default;
+
+  .esri-swipe {
+    position: absolute;
+    margin: 0;
+    background: transparent;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .esri-swipe,
+  .esri-ui .esri-swipe {
+    pointer-events: none;
+  }
+
+  .esri-swipe__container {
+    position: absolute;
+    z-index: 1;
+    margin: 0;
+    outline: 0;
+    border: 0;
+    padding: 0;
+    overflow: hidden; // needed to hide tracers in iOS
+    pointer-events: auto;
+    touch-action: none; // needed for touch actions to work correctly
+  }
+
+  .esri-swipe--horizontal .esri-swipe__container {
+    margin-left: -$button-width--half;
+    cursor: col-resize;
+    height: 100%;
+  }
+
+  .esri-swipe--vertical .esri-swipe__container {
+    margin-top: -$button-height--half;
+    cursor: row-resize;
+    width: 100%;
+  }
+
+  .esri-swipe--disabled .esri-swipe__container {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .esri-swipe__divider {
+    position: absolute;
+    background-color: $divider-color;
+  }
+
+  .esri-swipe--horizontal .esri-swipe__divider {
+    top: 0;
+    left: $button-width--half;
+    margin-left: -#{$divider-size * 0.5};
+    border-right: 1px solid rgba($interactive-font-color, 0.5);
+    border-left: 1px solid rgba($interactive-font-color, 0.5);
+    width: $divider-size;
+    height: 100%;
+  }
+
+  .esri-swipe--vertical .esri-swipe__divider {
+    top: $button-height--half;
+    left: 0;
+    margin-top: -#{$divider-size * 0.5};
+    border-top: 1px solid rgba($interactive-font-color, 0.5);
+    border-bottom: 1px solid rgba($interactive-font-color, 0.5);
+    width: 100%;
+    height: $divider-size;
+  }
+
+  .esri-swipe__handle {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba($interactive-font-color, 0.5);
+    border-radius: $border-radius;
+    background-color: $divider-color;
+    width: $button-width;
+    height: $button-height;
+
+    &--hidden {
+      visibility: hidden;
+    }
+  }
+
+  .esri-swipe__handle-icon {
+    position: relative;
+    z-index: 2;
+  }
+
+  .esri-swipe--horizontal .esri-swipe__handle {
+    top: calc(50% - #{$button-height--half});
+  }
+
+  .esri-swipe--vertical .esri-swipe__handle {
+    left: calc(50% - #{$button-height--half});
+  }
+
+  .esri-swipe__container:focus .esri-swipe__handle,
+  .esri-swipe__container:focus .esri-swipe__divider {
+    outline: inset 2px Highlight;
+    outline: inset 2px -webkit-focus-ring-color;
+  }
+
+  .esri-swipe__container:focus .esri-swipe__handle {
+    outline-offset: -3px;
+  }
+}
+
+@if $include_Swipe == true {
+  @include swipe();
+}

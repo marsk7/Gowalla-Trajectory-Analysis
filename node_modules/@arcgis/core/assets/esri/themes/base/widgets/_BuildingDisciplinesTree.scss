@@ -1,0 +1,13 @@
+/**
+ * Adds all the styles for the "Categories & Disciplines" tree used in the building explorer.
+ */
+@mixin buildingDisciplinesTree() {
+  .esri-building-disciplines-tree-node {
+    &__label {
+      --calcite-label-margin-bottom: 0;
+
+      padding-block: var(--calcite-spacing-xs);
+      word-break: break-all; // Allow long words to break: #63859
+    }
+  }
+}

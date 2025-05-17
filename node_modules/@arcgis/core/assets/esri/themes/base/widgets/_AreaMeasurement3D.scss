@@ -1,0 +1,7 @@
+/* stylelint-disable-next-line block-no-empty */
+@mixin areaMeasurement3D() {
+}
+
+@if $include_AreaMeasurement3D == true {
+  @include areaMeasurement3D();
+}
