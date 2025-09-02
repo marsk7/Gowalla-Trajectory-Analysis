@@ -38,6 +38,16 @@ A full-stack geospatial web application for analyzing user mobility patterns bas
   - Markers for the nearest check-in locations
   - Marker points info
 
+### 👣 User Trajectory
+<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/1f794191-e449-458f-9717-a4c4a783dd86" />
+
+- Visualize a user's movement path over time
+- Users can:
+  - Input a user ID
+  - Input or select a date
+- Results display:
+  - Connected polyline tracing the user’s trajectory
+
 
 ---
 
