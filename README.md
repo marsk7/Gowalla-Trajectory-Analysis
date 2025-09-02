@@ -213,8 +213,8 @@ location: api/
 cd api
 python -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
 cd ..
+pip install -r requirements.txt
 uvicorn api.main:app --reload --port 8000
 ```
 
