@@ -26,6 +26,18 @@ A full-stack geospatial web application for analyzing user mobility patterns bas
   - Pop-up tooltips showing user ID and timestamp
   - Real-time refresh when selection or time changes
 
+- Interactive map displaying the nearest venues within a specified category in Tokyo
+- Users can:
+  - Input latitude and longitude coordinates for their location
+  - Drag the red marker on the map to automatically update coordinates
+  - Select a venue category from the dropdown menu
+  - Specify the number of nearest results to display
+  - Search for results with a single click
+- Results display on the map:
+  - Geographic distribution of matching venues
+  - Interactive markers showing venue details (ID, distance, coordinates)
+  - Summary of results including total venues found and distance information
+
 ---
 
 ## 🛠️ Tech Stack
