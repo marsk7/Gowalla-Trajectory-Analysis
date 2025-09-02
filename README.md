@@ -48,6 +48,18 @@ A full-stack geospatial web application for analyzing user mobility patterns bas
 - Results display:
   - Connected polyline tracing the user’s trajectory
 
+### 🌍 Country Check-ins
+<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/8db91374-2f3a-4955-b1c5-db3bdf862466" />
+
+- Analyze check-in activity within any selected country
+- Users can:
+  - Choose a country name from a dropdown box
+  - Instantly retrieve all check-ins within its boundaries
+- Results display:
+  - Marker clusters or heatmaps showing dense activity zones
+  - Country polygon overlay for geographic context
+  - Useful for macro-level mobility analysis
+
 
 ---
 
