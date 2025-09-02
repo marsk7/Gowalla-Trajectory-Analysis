@@ -250,6 +250,7 @@ npm start
 ## 📖 Query implementation
 
 ### Area search
+<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/ba0c3312-b2f8-4b8a-a641-1c22951a1466" />
 Finds a certain date range and a certain location range checkin points
 
 #### SQL Query
