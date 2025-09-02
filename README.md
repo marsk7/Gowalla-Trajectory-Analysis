@@ -284,6 +284,7 @@ WHERE c.checkin_time BETWEEN '2010-07-01' AND '2010-07-31'
 
 
 ### Nearby search
+<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/fddfc2b5-4e41-4d3a-a853-d39051b95983" />
 Finds a certain location k-nearest checkin points
 
 #### SQL Query
@@ -316,6 +317,7 @@ LIMIT 100;
 
 
 ### User trajectory
+<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/1f794191-e449-458f-9717-a4c4a783dd86" />
 Finds a user's check in trajectory on a date
 
 #### SQL Query
@@ -345,6 +347,7 @@ ORDER BY c.checkin_time ASC;
 
 
 ### Country check-ins
+<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/8db91374-2f3a-4955-b1c5-db3bdf862466" />
 Finds a country's all check in points
 
 #### SQL Query
@@ -359,6 +362,7 @@ WHERE ST_Within(l.geom, (
 
 #### Parameters
 - `Country`  (string): select country on the dropdown box and search certain country
+<img width="889" height="663" alt="Image" src="https://github.com/user-attachments/assets/fee922b0-beb1-47d2-b509-8841b955fd1d" />
   
 #### Response Example
 ```json
@@ -374,6 +378,7 @@ WHERE ST_Within(l.geom, (
 
 
 ### Friend trajectory
+<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/e5656213-5f7d-4df5-8dae-a902be7974dc" />
 Finds a user's all friends' trajectory which most similar to user on certain date
 
 #### SQL Query
