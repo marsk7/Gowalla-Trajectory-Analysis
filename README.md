@@ -15,6 +15,17 @@ A full-stack geospatial web application for analyzing user mobility patterns bas
 - 🔎 Auto-complete for user ID & valid check-in dates
 - 🗺️ Interactive Leaflet map with real-time zoom to results
 
+### 🗺️ Area Search
+<img width="1440" height="788" alt="Area Search" src="https://github.com/user-attachments/assets/7d308282-7c95-4500-afa7-94ede675fa42" />
+Discover check-ins within any rectangular area and time interval
+- Users can:
+ - Draw a bounding box on the map to define a region
+ - Specify a date range for filtering check-ins
+- Results display:
+ - Blue circular markers representing check-in locations
+ - Pop-up tooltips showing user ID and timestamp
+ - Real-time refresh when selection or time changes
+
 ---
 
 ## 🛠️ Tech Stack
