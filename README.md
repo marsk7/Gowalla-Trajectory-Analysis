@@ -49,7 +49,7 @@ A full-stack geospatial web application for analyzing user mobility patterns bas
   - Connected polyline tracing the user’s trajectory
 
 ### 🌍 Country Check-ins
-<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/8db91374-2f3a-4955-b1c5-db3bdf862466" />
+<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/e3de0a12-cc38-4d80-a771-5c78146d298f" />
 
 - Analyze check-in activity within any selected country
 - Users can:
@@ -60,6 +60,16 @@ A full-stack geospatial web application for analyzing user mobility patterns bas
   - Country polygon overlay for geographic context
   - Useful for macro-level mobility analysis
 
+### 🤝 Friend Trajectory
+<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/e7c21a22-f7a0-46d9-a25b-9d374f2d6019" />
+
+- Compare a user’s path with their friends using spatial similarity
+- Users can:
+  - Select one user and compare their movement with all friends
+  - View top-k most similar friend trajectories
+- Results display:
+  - Overlapping polylines in different colors
+  - Interactive toggling of friend trajectories
 
 ---
 
