@@ -231,6 +231,7 @@ DB_PORT=5432
 ## 4. Frontend Setup
 location: client/
 
+Open new terminal:
 ```bash
 cd client
 npm install
