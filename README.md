@@ -17,6 +17,7 @@ A full-stack geospatial web application for analyzing user mobility patterns bas
 
 ### 🗺️ Area Search
 <img width="1440" height="788" alt="Area Search" src="https://github.com/user-attachments/assets/7d308282-7c95-4500-afa7-94ede675fa42" />
+
 - Discover check-ins within any rectangular area and time interval
 - Users can:
   - Draw a bounding box on the map to define a region
