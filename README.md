@@ -16,7 +16,7 @@ A full-stack geospatial web application for analyzing user mobility patterns bas
 - 🗺️ Interactive Leaflet map with real-time zoom to results
 
 ### 🗺️ Area Search
-<img width="1440" height="788" alt="Area Search" src="https://github.com/user-attachments/assets/7d308282-7c95-4500-afa7-94ede675fa42" />
+<img width="1440" height="788" alt="Area Search Image" src="https://github.com/user-attachments/assets/7d308282-7c95-4500-afa7-94ede675fa42" />
 
 - Discover check-ins within any rectangular area and time interval
 - Users can:
@@ -28,7 +28,7 @@ A full-stack geospatial web application for analyzing user mobility patterns bas
   - Real-time refresh when selection or time changes
 
 ### 📍 Nearby Search
-<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/fddfc2b5-4e41-4d3a-a853-d39051b95983" />
+<img width="1440" height="788" alt="Nearby Search Image" src="https://github.com/user-attachments/assets/fddfc2b5-4e41-4d3a-a853-d39051b95983" />
 
 - Find the closest venues to any selected point
 - Users can:
@@ -39,7 +39,7 @@ A full-stack geospatial web application for analyzing user mobility patterns bas
   - Marker points info
 
 ### 👣 User Trajectory
-<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/1f794191-e449-458f-9717-a4c4a783dd86" />
+<img width="1440" height="788" alt="User Trajectory Image" src="https://github.com/user-attachments/assets/1f794191-e449-458f-9717-a4c4a783dd86" />
 
 - Visualize a user's movement path over time
 - Users can:
@@ -49,7 +49,7 @@ A full-stack geospatial web application for analyzing user mobility patterns bas
   - Connected polyline tracing the user’s trajectory
 
 ### 🌍 Country Check-ins
-<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/e3de0a12-cc38-4d80-a771-5c78146d298f" />
+<img width="1440" height="788" alt="Country Check-ins Image" src="https://github.com/user-attachments/assets/e3de0a12-cc38-4d80-a771-5c78146d298f" />
 
 - Analyze check-in activity within any selected country
 - Users can:
@@ -61,7 +61,7 @@ A full-stack geospatial web application for analyzing user mobility patterns bas
   - Useful for macro-level mobility analysis
 
 ### 🤝 Friend Trajectory
-<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/54033591-fb49-4f1c-aa67-4ec606c5ae9a" />
+<img width="1440" height="788" alt="Friend Trajectory Image" src="https://github.com/user-attachments/assets/54033591-fb49-4f1c-aa67-4ec606c5ae9a" />
 
 - Compare a user’s path with their friends using spatial similarity
 - Users can:
