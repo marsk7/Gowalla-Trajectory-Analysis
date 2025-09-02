@@ -20,12 +20,24 @@ A full-stack geospatial web application for analyzing user mobility patterns bas
 
 - Discover check-ins within any rectangular area and time interval
 - Users can:
-  - Draw a bounding box on the map to define a region
+  - Define a bounding box on the map to draw a region
   - Specify a date range for filtering check-ins
 - Results display:
   - Blue circular markers representing check-in locations
   - Pop-up tooltips showing user ID and timestamp
   - Real-time refresh when selection or time changes
+
+### 📍 Nearby Search
+<img width="1440" height="788" alt="Image" src="https://github.com/user-attachments/assets/fddfc2b5-4e41-4d3a-a853-d39051b95983" />
+
+- Find the closest venues to any selected point
+- Users can:
+  - Enter any map location to trigger a nearest-neighbor query
+  - Adjust the number of returned points
+- Results display:
+  - Markers for the nearest check-in locations
+  - Marker points info
+
 
 ---
 
